@@ -13,32 +13,32 @@ const HowItWorksSection: React.FC = () => {
       id: 1,
       icon: <Plus className="w-8 h-8" />,
       title: "Join Your Local Hive",
-      description: "Find or create a community group in your neighborhood",
-      details: "Sign up and discover existing hives near you, or start your own community group. Connect with neighbors who share your values of collaboration and sustainability.",
+      description: "AI matches you with perfect community groups in your neighborhood",
+      details: "Sign up and let our AI discover the best hives near you based on your interests and location, or start your own community group with smart recommendations for success.",
       gradient: "from-mint-400 to-mint-600"
     },
     {
       id: 2,
       icon: <Users className="w-8 h-8" />,
       title: "Participate & Share",
-      description: "Join group purchases, share tools, and organize events",
-      details: "Browse available group orders, lend or borrow items from neighbors, and participate in community events. Every interaction strengthens your local network.",
+      description: "Get AI-powered suggestions for deals, tools, and events you'll love",
+      details: "Browse AI-curated group orders, discover tools and items recommended just for you, and get smart suggestions for community events. BeeGuardian ensures every interaction is safe and positive.",
       gradient: "from-blue-400 to-blue-600"
     },
     {
       id: 3,
       icon: <Truck className="w-8 h-8" />,
       title: "Coordinate & Deliver",
-      description: "Organize logistics and support your community",
-      details: "Help coordinate deliveries, organize pickup points, and support fellow community members. Build trust and reliability within your hive.",
+      description: "Smart AI matching optimizes deliveries and logistics automatically",
+      details: "AI matches drivers with optimal delivery routes, coordinates pickup points intelligently, and helps build trust through verified ratings and community feedback.",
       gradient: "from-green-400 to-green-600"
     },
     {
       id: 4,
       icon: <Heart className="w-8 h-8" />,
       title: "Save Together, Waste Less",
-      description: "Reduce costs and environmental impact by sharing resources",
-      details: "Enjoy your savings while knowing you've reduced packaging waste and strengthened community bonds. Share your success with others!",
+      description: "AI tracks your impact and suggests ways to save even more",
+      details: "Enjoy your savings while AI analytics show your environmental impact reduction and community contribution. Get personalized suggestions to maximize your benefits and help others discover the platform!",
       gradient: "from-purple-400 to-purple-600"
     }
   ];

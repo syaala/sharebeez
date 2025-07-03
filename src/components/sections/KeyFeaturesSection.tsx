@@ -20,10 +20,10 @@ const KeyFeaturesSection: React.FC = () => {
     {
       id: 'dashboard',
       icon: <Users className="w-5 h-5" />,
-      title: "Dashboard",
-      description: "Your community overview",
-      fullDescription: "Get a complete overview of your community impact, savings, and activities. Track your personal contributions and see how your neighborhood is thriving together.",
-      benefits: ["Real-time savings tracking", "Community impact metrics", "Personal activity feed", "Hive performance insights"]
+      title: "AI Analytics Dashboard",
+      description: "Intelligent community insights",
+      fullDescription: "Get AI-powered insights into your community impact, savings, and activities. Smart analytics track your contributions and provide personalized recommendations for maximizing your community benefits.",
+      benefits: ["AI-powered insights", "Predictive analytics", "Personalized recommendations", "Smart performance tracking", "Community growth metrics"]
     },
     {
       id: 'hives',
@@ -36,10 +36,10 @@ const KeyFeaturesSection: React.FC = () => {
     {
       id: 'marketplace',
       icon: <ShoppingBag className="w-5 h-5" />,
-      title: "Marketplace",
-      description: "Group buying & selling",
-      fullDescription: "Join group purchases to unlock bulk pricing and save money together. From groceries to household items, pool your orders with neighbors for better deals.",
-      benefits: ["Bulk pricing discounts", "Shared shipping costs", "Local vendor support", "Quality group coordination"]
+      title: "AI-Powered Marketplace",
+      description: "Smart deals with AI optimization",
+      fullDescription: "Experience intelligent deal suggestions, auto-generated descriptions, and dynamic pricing optimization. Our AI analyzes your preferences and behavior to suggest perfect deals while helping sellers optimize their listings.",
+      benefits: ["AI deal recommendations", "Smart pricing optimization", "Auto-generated descriptions", "Trending deal alerts", "Boost suggestions"]
     },
     {
       id: 'sharing',
@@ -60,18 +60,18 @@ const KeyFeaturesSection: React.FC = () => {
     {
       id: 'delivery',
       icon: <Truck className="w-5 h-5" />,
-      title: "Delivery",
-      description: "Local logistics network",
-      fullDescription: "Create a neighbor-to-neighbor delivery network. Earn rewards by helping others while reducing delivery costs and environmental impact.",
-      benefits: ["Neighbor delivery network", "Earn delivery rewards", "Reduced shipping costs", "Environmental impact"]
+      title: "Smart Delivery Network",
+      description: "AI-matched local logistics",
+      fullDescription: "AI-powered driver matching creates an efficient neighbor-to-neighbor delivery network. Smart routing and automated matching optimize delivery times while maximizing earnings for drivers.",
+      benefits: ["AI driver matching", "Smart route optimization", "Automated scheduling", "Dynamic pricing", "Predictive demand mapping"]
     },
     {
       id: 'chat',
       icon: <MessageCircle className="w-5 h-5" />,
-      title: "Community Chat",
-      description: "Stay connected",
-      fullDescription: "Stay connected with your community through organized chat channels. Coordinate activities, share updates, and build lasting relationships.",
-      benefits: ["Organized chat channels", "Real-time communication", "Community announcements", "Group coordination"]
+      title: "BeeGuardian AI Chat",
+      description: "Safe, smart communication",
+      fullDescription: "Stay connected with AI-powered safety and guidance. BeeGuardian monitors conversations, provides helpful tips, and ensures a positive community experience while protecting against scams and abuse.",
+      benefits: ["Real-time AI moderation", "Scam protection", "Personalized guidance", "Badge & karma system", "Community safety"]
     }
   ];
 
@@ -213,7 +213,14 @@ const KeyFeaturesSection: React.FC = () => {
       category: "Groceries",
       description: "Premium organic jasmine rice, direct from farm",
       location: "Whole Foods Pickup",
-      status: "active"
+      status: "active",
+      aiFeatures: {
+        trending: true,
+        aiOptimized: true,
+        smartSuggestion: "Perfect for your family size!",
+        boostRecommended: false,
+        priceOptimal: true
+      }
     },
     {
       id: 2,
@@ -230,7 +237,14 @@ const KeyFeaturesSection: React.FC = () => {
       category: "Pantry",
       description: "Extra virgin olive oil from local producer",
       location: "Community Center",
-      status: "active"
+      status: "active",
+      aiFeatures: {
+        trending: false,
+        aiOptimized: true,
+        smartSuggestion: "Great for cooking enthusiasts!",
+        boostRecommended: true,
+        priceOptimal: false
+      }
     },
     {
       id: 3,
@@ -247,7 +261,14 @@ const KeyFeaturesSection: React.FC = () => {
       category: "Local Goods",
       description: "Wildflower honey from neighborhood beekeeper",
       location: "Farmer's Market",
-      status: "almost_full"
+      status: "almost_full",
+      aiFeatures: {
+        trending: true,
+        aiOptimized: true,
+        smartSuggestion: "Almost full - join now!",
+        boostRecommended: false,
+        priceOptimal: true
+      }
     },
     {
       id: 4,
@@ -487,7 +508,13 @@ const KeyFeaturesSection: React.FC = () => {
       unread: 3,
       members: 47,
       type: "community",
-      pinned: true
+      pinned: true,
+      aiFeatures: {
+        moderated: true,
+        sentiment: "positive",
+        beeGuardianActive: true,
+        safetyScore: 98
+      }
     },
     {
       id: 2,
@@ -498,7 +525,14 @@ const KeyFeaturesSection: React.FC = () => {
       unread: 1,
       members: 23,
       type: "marketplace",
-      pinned: false
+      pinned: false,
+      aiFeatures: {
+        moderated: true,
+        sentiment: "neutral",
+        beeGuardianActive: true,
+        safetyScore: 95,
+        aiSuggestion: "Consider boosting this deal!"
+      }
     },
     {
       id: 3,
@@ -1192,6 +1226,16 @@ const KeyFeaturesSection: React.FC = () => {
                                       Almost Full!
                                     </div>
                                   )}
+                                  {item.aiFeatures?.trending && (
+                                    <div className="absolute -top-2 -left-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                                      🔥 Trending
+                                    </div>
+                                  )}
+                                  {item.aiFeatures?.aiOptimized && (
+                                    <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                                      🤖 AI
+                                    </div>
+                                  )}
                                 </div>
                                 <div className="flex-1">
                                   <div className="flex items-center space-x-2 mb-2">
@@ -1201,6 +1245,17 @@ const KeyFeaturesSection: React.FC = () => {
                                     </span>
                                   </div>
                                   <p className="text-sm text-gray-600 mb-3">{item.description}</p>
+                                  {item.aiFeatures?.smartSuggestion && (
+                                    <div className="bg-gradient-to-r from-mint-50 to-lavender-50 border border-mint-200 rounded-lg p-2 mb-3">
+                                      <div className="flex items-center space-x-2">
+                                        <div className="w-4 h-4 bg-gradient-to-r from-mint-500 to-lavender-500 rounded-full flex items-center justify-center">
+                                          <span className="text-white text-xs">✨</span>
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">AI Suggestion:</span>
+                                        <span className="text-sm text-gray-600">{item.aiFeatures.smartSuggestion}</span>
+                                      </div>
+                                    </div>
+                                  )}
                                   <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
                                     <span className="flex items-center">
                                       {item.organizerAvatar} {item.organizer}
@@ -1214,12 +1269,22 @@ const KeyFeaturesSection: React.FC = () => {
                                       {item.timeLeft}
                                     </span>
                                   </div>
-                                  <div className="flex items-center space-x-3">
+                                  <div className="flex items-center space-x-3 flex-wrap">
                                     <span className="text-2xl font-bold text-green-600">${item.price}</span>
                                     <span className="text-gray-400 line-through">${item.originalPrice}</span>
                                     <span className="bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs font-medium">
                                       {item.savings}% off
                                     </span>
+                                    {item.aiFeatures?.priceOptimal && (
+                                      <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
+                                        💡 Best Price
+                                      </span>
+                                    )}
+                                    {item.aiFeatures?.boostRecommended && (
+                                      <span className="bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full text-xs font-medium">
+                                        🚀 Boost for $0.99
+                                      </span>
+                                    )}
                                   </div>
                                 </div>
                               </div>
@@ -1691,11 +1756,21 @@ const KeyFeaturesSection: React.FC = () => {
                                 <MessageCircle className="w-6 h-6 text-white" />
                               </div>
                               <div className="flex-1">
-                                <div className="flex items-center space-x-2">
+                                <div className="flex items-center space-x-2 flex-wrap">
                                   <h5 className="font-bold text-gray-900">{channel.name}</h5>
                                   {channel.pinned && (
                                     <span className="bg-mint-100 text-mint-600 px-2 py-1 rounded-full text-xs font-medium">
                                       📌 Pinned
+                                    </span>
+                                  )}
+                                  {channel.aiFeatures?.beeGuardianActive && (
+                                    <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
+                                      🤖 BeeGuardian
+                                    </span>
+                                  )}
+                                  {channel.aiFeatures?.safetyScore >= 95 && (
+                                    <span className="bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs font-medium">
+                                      🛡️ Safe
                                     </span>
                                   )}
                                   <span className="text-xs text-gray-500">{channel.members} members</span>
@@ -1703,6 +1778,17 @@ const KeyFeaturesSection: React.FC = () => {
                                 <div className="text-sm text-gray-600 mt-1">
                                   <span className="font-medium">{channel.lastSender}:</span> {channel.lastMessage}
                                 </div>
+                                {channel.aiFeatures?.aiSuggestion && (
+                                  <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-lg p-2 mt-2">
+                                    <div className="flex items-center space-x-2">
+                                      <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
+                                        <span className="text-white text-xs">🤖</span>
+                                      </div>
+                                      <span className="text-xs font-medium text-blue-700">BeeGuardian:</span>
+                                      <span className="text-xs text-blue-600">{channel.aiFeatures.aiSuggestion}</span>
+                                    </div>
+                                  </div>
+                                )}
                               </div>
                             </div>
                             <div className="text-right">

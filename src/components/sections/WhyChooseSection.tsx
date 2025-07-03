@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { DollarSign, Recycle, Users, MapPin } from 'lucide-react';
+import { DollarSign, Recycle, Users, MapPin, Brain, Shield } from 'lucide-react';
 
 const WhyChooseSection: React.FC = () => {
   const ref = useRef(null);
@@ -44,6 +44,24 @@ const WhyChooseSection: React.FC = () => {
       details: "Coordinate group purchases from local vendors, support neighborhood businesses, and keep money in your community.",
       bgColor: "bg-gradient-to-br from-orange-50 to-orange-100",
       iconColor: "text-orange-600"
+    },
+    {
+      id: 5,
+      icon: <Brain className="w-8 h-8" />,
+      title: "AI-Powered Intelligence",
+      description: "Smart recommendations and automated optimization for better experiences",
+      details: "Get personalized deal suggestions, smart pricing optimization, and AI-driven insights that help you save more and connect better.",
+      bgColor: "bg-gradient-to-br from-mint-50 to-mint-100",
+      iconColor: "text-mint-600"
+    },
+    {
+      id: 6,
+      icon: <Shield className="w-8 h-8" />,
+      title: "BeeGuardian Protection",
+      description: "AI-powered safety and community moderation for peace of mind",
+      details: "Advanced AI monitors conversations, prevents scams, and ensures a safe, positive community experience for everyone.",
+      bgColor: "bg-gradient-to-br from-lavender-50 to-lavender-100",
+      iconColor: "text-lavender-600"
     }
   ];
 
