@@ -581,31 +581,31 @@ const KeyFeaturesSection: React.FC = () => {
     // Move platform to side and position feature panel alongside
     const configurations = {
       dashboard: {
-        platform: { x: -200, y: 0, rotation: -2, scale: 0.85 },
+        platform: { x: -120, y: 0, rotation: -1, scale: 0.9 },
         panel: { side: 'right', x: 0, y: 0 }
       },
       hives: {
-        platform: { x: 180, y: -5, rotation: 1.2, scale: 0.82 },
+        platform: { x: 120, y: -5, rotation: 1, scale: 0.9 },
         panel: { side: 'left', x: 0, y: 0 }
       },
       marketplace: {
-        platform: { x: -180, y: 10, rotation: -1.5, scale: 0.8 },
+        platform: { x: -120, y: 10, rotation: -1, scale: 0.9 },
         panel: { side: 'right', x: 0, y: 0 }
       },
       sharing: {
-        platform: { x: 190, y: -15, rotation: 1.8, scale: 0.82 },
+        platform: { x: 120, y: -15, rotation: 1, scale: 0.9 },
         panel: { side: 'left', x: 0, y: 0 }
       },
       events: {
-        platform: { x: -190, y: 20, rotation: -2, scale: 0.83 },
+        platform: { x: -120, y: 20, rotation: -1, scale: 0.9 },
         panel: { side: 'right', x: 0, y: 0 }
       },
       delivery: {
-        platform: { x: 210, y: 8, rotation: 1.2, scale: 0.84 },
+        platform: { x: 120, y: 8, rotation: 1, scale: 0.9 },
         panel: { side: 'left', x: 0, y: 0 }
       },
       chat: {
-        platform: { x: -200, y: -10, rotation: -1.8, scale: 0.81 },
+        platform: { x: -120, y: -10, rotation: -1, scale: 0.9 },
         panel: { side: 'right', x: 0, y: 0 }
       }
     };
@@ -754,14 +754,14 @@ const KeyFeaturesSection: React.FC = () => {
                 x: panelPosition.side === 'left' ? -100 : 100,
                 y: 20
               }}
-              transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
-              className={`absolute z-40 bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-white/50 p-8 w-96 ${
+              transition={{ duration: 0.5, type: "spring", bounce: 0.1 }}
+              className={`absolute z-40 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 p-4 w-72 ${
                 panelPosition.side === 'left' ? 'left-0' : 'right-0'
               }`}
               style={{
                 top: '20px',
-                height: '660px',
-                maxHeight: 'calc(100vh - 200px)'
+                height: '320px',
+                maxHeight: '320px'
               }}
             >
               <motion.div
@@ -770,78 +770,54 @@ const KeyFeaturesSection: React.FC = () => {
                 transition={{ delay: 0.3, duration: 0.5 }}
                 className="relative h-full flex flex-col"
               >
-                {/* Decorative background elements */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-yellow-200 to-mint-200 rounded-full opacity-20"></div>
-                <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-gradient-to-br from-lavender-200 to-purple-200 rounded-full opacity-30"></div>
-                <div className="absolute top-1/3 -right-2 w-6 h-6 bg-gradient-to-br from-mint-300 to-teal-300 rounded-full opacity-25"></div>
-
                 {/* Header */}
-                <div className="mb-8">
-                  <motion.div
-                    animate={{
-                      rotate: [0, 8, -8, 0],
-                      scale: [1, 1.05, 1]
-                    }}
-                    transition={{ duration: 1, delay: 0.4 }}
-                    className="w-20 h-20 bg-gradient-to-br from-mint-500 to-lavender-500 rounded-3xl flex items-center justify-center mb-6 text-white shadow-xl mx-auto"
-                  >
-                    {features.find(f => f.id === activeTab)?.icon}
-                  </motion.div>
-                  <h3 className="text-3xl font-black text-gray-900 mb-3 text-center">
-                    {features.find(f => f.id === activeTab)?.title}
-                  </h3>
-                  <p className="text-lg text-gray-600 font-medium text-center">
-                    {features.find(f => f.id === activeTab)?.description}
-                  </p>
+                <div className="mb-4">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-mint-500 to-lavender-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                      {features.find(f => f.id === activeTab)?.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900">
+                        {features.find(f => f.id === activeTab)?.title}
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        {features.find(f => f.id === activeTab)?.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Description */}
-                <div className="flex-1">
-                  <p className="text-gray-700 mb-8 leading-relaxed text-lg">
+                {/* Content */}
+                <div className="flex-1 overflow-y-auto">
+                  <p className="text-gray-700 mb-4 text-sm leading-relaxed">
                     {features.find(f => f.id === activeTab)?.fullDescription}
                   </p>
 
                   {/* Benefits Section */}
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 mb-8">
-                    <h4 className="font-black text-gray-900 mb-6 text-lg flex items-center">
-                      <span className="w-3 h-3 bg-gradient-to-br from-mint-500 to-lavender-500 rounded-full mr-3"></span>
+                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3">
+                    <h4 className="font-bold text-gray-900 mb-3 text-sm flex items-center">
+                      <span className="w-2 h-2 bg-gradient-to-br from-mint-500 to-lavender-500 rounded-full mr-2"></span>
                       Key Benefits
                     </h4>
-                    <div className="space-y-4">
-                      {features.find(f => f.id === activeTab)?.benefits.map((benefit, index) => (
-                        <motion.div
+                    <div className="space-y-2">
+                      {features.find(f => f.id === activeTab)?.benefits.slice(0, 4).map((benefit, index) => (
+                        <div
                           key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.5 + index * 0.15, duration: 0.4 }}
-                          className="flex items-center text-gray-700 bg-white rounded-xl p-4 shadow-sm"
+                          className="flex items-start text-gray-700 text-xs"
                         >
-                          <motion.div
-                            animate={{
-                              scale: [1, 1.4, 1],
-                              rotate: [0, 180, 360]
-                            }}
-                            transition={{ delay: 0.6 + index * 0.15, duration: 0.6 }}
-                            className="w-4 h-4 bg-gradient-to-br from-mint-500 to-lavender-500 rounded-full mr-4 flex-shrink-0"
-                          ></motion.div>
-                          <span className="font-semibold">{benefit}</span>
-                        </motion.div>
+                          ></div>
+                          <span className="font-medium">{benefit}</span>
+                        </div>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="space-y-3">
+                {/* Action Button */}
+                <div className="mt-4">
                   <button
                     onClick={() => setShowFeaturePanel(false)}
-                    className="w-full bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-6 py-4 rounded-2xl font-bold hover:shadow-xl transition-all duration-300 text-lg"
-                  >
-                    ✨ Explore {features.find(f => f.id === activeTab)?.title}
-                  </button>
-                  <button
-                    onClick={() => setShowFeaturePanel(false)}
-                    className="w-full bg-white/50 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-white/70 transition-all duration-300 border border-gray-200"
+                    className="w-full bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 text-sm"
                   >
                     ← Back to Platform
                   </button>
@@ -851,7 +827,7 @@ const KeyFeaturesSection: React.FC = () => {
           )}
 
           {/* Platform Container with Side Panel Layout */}
-          <div className="relative max-w-7xl mx-auto overflow-visible" style={{ minHeight: '700px' }}>
+          <div className="relative max-w-6xl mx-auto overflow-visible" style={{ minHeight: '500px' }}>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{
@@ -869,7 +845,7 @@ const KeyFeaturesSection: React.FC = () => {
                 scale: { duration: 1, type: "spring", bounce: 0.2 }
               }}
               className="bg-white rounded-3xl shadow-2xl border border-white/20 overflow-hidden relative origin-center"
-              style={{ height: '700px' }}
+              style={{ height: '500px' }}
             >
             {/* Platform Header */}
             <div className="bg-gradient-to-r from-mint-500 to-lavender-500 p-4">
@@ -963,58 +939,57 @@ const KeyFeaturesSection: React.FC = () => {
               </div>
 
               {/* Main Content Area */}
-              <div className="flex-1 p-6 overflow-y-auto" style={{ height: '600px' }}>
+              <div className="flex-1 p-4 overflow-y-auto" style={{ height: '400px' }}>
                 {/* Dashboard Tab */}
                 {activeTab === 'dashboard' && (
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="space-y-6"
+                    className="space-y-3"
                   >
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-2xl font-bold text-gray-900">Welcome back, Alex! 👋</h4>
-                      <div className="text-sm text-gray-600">March 12, 2024</div>
+                    <div className="flex items-center justify-between mb-4">
+                      <h4 className="text-lg font-bold text-gray-900">Welcome back, Alex! 👋</h4>
+                      <div className="text-xs text-gray-600">March 12, 2024</div>
                     </div>
 
                     {/* Stats Grid */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 border border-green-200">
-                        <div className="text-2xl font-black text-green-600">{dashboardStats.totalSavings}</div>
-                        <div className="text-sm text-green-700 font-medium">Total Saved</div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-4">
+                      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-2 border border-green-200">
+                        <div className="text-lg font-black text-green-600">{dashboardStats.totalSavings}</div>
+                        <div className="text-xs text-green-700 font-medium">Total Saved</div>
                       </div>
-                      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border border-blue-200">
-                        <div className="text-2xl font-black text-blue-600">{dashboardStats.monthlyOrders}</div>
-                        <div className="text-sm text-blue-700 font-medium">Orders This Month</div>
+                      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-2 border border-blue-200">
+                        <div className="text-lg font-black text-blue-600">{dashboardStats.monthlyOrders}</div>
+                        <div className="text-xs text-blue-700 font-medium">Orders This Month</div>
                       </div>
-                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 border border-purple-200">
-                        <div className="text-2xl font-black text-purple-600">{dashboardStats.itemsShared}</div>
-                        <div className="text-sm text-purple-700 font-medium">Items Shared</div>
+                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-2 border border-purple-200">
+                        <div className="text-lg font-black text-purple-600">{dashboardStats.itemsShared}</div>
+                        <div className="text-xs text-purple-700 font-medium">Items Shared</div>
                       </div>
-                      <div className="bg-gradient-to-br from-mint-50 to-mint-100 rounded-xl p-4 border border-mint-200">
-                        <div className="text-2xl font-black text-mint-600">{dashboardStats.carbonSaved}</div>
-                        <div className="text-sm text-mint-700 font-medium">Carbon Saved</div>
+                      <div className="bg-gradient-to-br from-mint-50 to-mint-100 rounded-lg p-2 border border-mint-200">
+                        <div className="text-lg font-black text-mint-600">{dashboardStats.carbonSaved}</div>
+                        <div className="text-xs text-mint-700 font-medium">Carbon Saved</div>
                       </div>
                     </div>
 
                     {/* Active Hives */}
-                    <div className="bg-white rounded-xl border border-gray-200 p-6">
-                      <h5 className="font-bold text-gray-900 mb-4">Your Active Hives</h5>
-                      <div className="space-y-3">
-                        {activeHives.map((hive, index) => (
-                          <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                            <div className="flex items-center space-x-3">
-                              <div className={`w-10 h-10 bg-gradient-to-br ${hive.color} rounded-full flex items-center justify-center text-lg`}>
+                    <div className="bg-white rounded-lg border border-gray-200 p-3">
+                      <h5 className="font-semibold text-gray-900 mb-2 text-sm">Your Active Hives</h5>
+                      <div className="space-y-2">
+                        {activeHives.slice(0, 2).map((hive, index) => (
+                          <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                            <div className="flex items-center space-x-2">
+                              <div className={`w-6 h-6 bg-gradient-to-br ${hive.color} rounded-full flex items-center justify-center text-xs`}>
                                 {hive.avatar}
                               </div>
                               <div>
-                                <div className="font-medium text-gray-900">{hive.name}</div>
-                                <div className="text-sm text-gray-600">{hive.members} members • {hive.status}</div>
+                                <div className="font-medium text-gray-900 text-xs">{hive.name}</div>
+                                <div className="text-xs text-gray-600">{hive.members} members</div>
                               </div>
                             </div>
                             <div className="text-right">
-                              <div className="font-bold text-green-600">{hive.savings}</div>
-                              <div className="text-xs text-gray-500">saved</div>
+                              <div className="font-bold text-green-600 text-xs">{hive.savings}</div>
                             </div>
                           </div>
                         ))}
@@ -1022,16 +997,16 @@ const KeyFeaturesSection: React.FC = () => {
                     </div>
 
                     {/* Recent Activity */}
-                    <div className="bg-white rounded-xl border border-gray-200 p-6">
-                      <h5 className="font-bold text-gray-900 mb-4">Recent Activity</h5>
-                      <div className="space-y-3">
-                        {recentActivity.map((activity, index) => (
-                          <div key={index} className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                            <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-sm">
+                    <div className="bg-white rounded-lg border border-gray-200 p-3">
+                      <h5 className="font-semibold text-gray-900 mb-2 text-sm">Recent Activity</h5>
+                      <div className="space-y-2">
+                        {recentActivity.slice(0, 3).map((activity, index) => (
+                          <div key={index} className="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg transition-colors">
+                            <div className="w-5 h-5 bg-gray-100 rounded-full flex items-center justify-center text-xs">
                               {activity.icon}
                             </div>
                             <div className="flex-1">
-                              <div className="text-sm text-gray-900">{activity.text}</div>
+                              <div className="text-xs text-gray-900">{activity.text}</div>
                               <div className="text-xs text-gray-500">{activity.time}</div>
                             </div>
                           </div>
@@ -1047,28 +1022,28 @@ const KeyFeaturesSection: React.FC = () => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="space-y-6"
+                    className="space-y-3"
                   >
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-2xl font-bold text-gray-900">My Hives</h4>
-                      <button className="bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
-                        + Discover Hives
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="text-lg font-bold text-gray-900">My Hives</h4>
+                      <button className="bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-3 py-1 rounded-lg font-medium hover:shadow-lg transition-all duration-300 text-sm">
+                        + Discover
                       </button>
                     </div>
 
                     {/* Hive Stats */}
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="bg-gradient-to-br from-mint-50 to-mint-100 rounded-xl p-4 border border-mint-200">
-                        <div className="text-2xl font-black text-mint-600">3</div>
-                        <div className="text-sm text-mint-700 font-medium">Active Hives</div>
+                    <div className="grid grid-cols-3 gap-2 mb-3">
+                      <div className="bg-gradient-to-br from-mint-50 to-mint-100 rounded-lg p-2 border border-mint-200">
+                        <div className="text-lg font-black text-mint-600">3</div>
+                        <div className="text-xs text-mint-700 font-medium">Active Hives</div>
                       </div>
-                      <div className="bg-gradient-to-br from-lavender-50 to-lavender-100 rounded-xl p-4 border border-lavender-200">
-                        <div className="text-2xl font-black text-lavender-600">101</div>
-                        <div className="text-sm text-lavender-700 font-medium">Total Neighbors</div>
+                      <div className="bg-gradient-to-br from-lavender-50 to-lavender-100 rounded-lg p-2 border border-lavender-200">
+                        <div className="text-lg font-black text-lavender-600">101</div>
+                        <div className="text-xs text-lavender-700 font-medium">Total Neighbors</div>
                       </div>
-                      <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-4 border border-yellow-200">
-                        <div className="text-2xl font-black text-yellow-600">$36K</div>
-                        <div className="text-sm text-yellow-700 font-medium">Combined Savings</div>
+                      <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-2 border border-yellow-200">
+                        <div className="text-lg font-black text-yellow-600">$36K</div>
+                        <div className="text-xs text-yellow-700 font-medium">Combined Savings</div>
                       </div>
                     </div>
 
