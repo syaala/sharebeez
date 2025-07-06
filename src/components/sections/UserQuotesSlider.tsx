@@ -73,6 +73,10 @@ const UserQuotesSlider: React.FC = () => {
 
   const currentQuoteData = quotes[currentQuote];
 
+  if (!currentQuoteData) {
+    return null;
+  }
+
   return (
     <section className="section-padding bg-white" ref={ref}>
       <div className="container-custom">

@@ -10,11 +10,11 @@ const KeyFeaturesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeTab, setActiveTab] = useState('dashboard');
   const [selectedItem, setSelectedItem] = useState(null);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<any[]>([]);
   const [notifications, setNotifications] = useState(3);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [showFeaturePanel, setShowFeaturePanel] = useState(false);
-  const [platformPosition, setPlatformPosition] = useState({ x: 0, y: 0, rotation: 0 });
+  const [platformPosition, setPlatformPosition] = useState({ x: 0, y: 0, rotation: 0, scale: 1 });
   const [panelPosition, setPanelPosition] = useState({ side: 'right', x: 0, y: 0 });
 
   const features = [
@@ -193,12 +193,12 @@ const KeyFeaturesSection = () => {
     }
   ];
 
-  const addToCart = (item) => {
+  const addToCart = (item: any) => {
     setCartItems([...cartItems, item]);
     setNotifications(notifications + 1);
   };
 
-  const handleTabSwitch = (tabId) => {
+  const handleTabSwitch = (tabId: string) => {
     setActiveTab(tabId);
     setShowFeaturePanel(true);
 
@@ -234,7 +234,7 @@ const KeyFeaturesSection = () => {
       }
     };
 
-    const config = configurations[tabId] || configurations.dashboard;
+    const config = (configurations as any)[tabId] || configurations.dashboard;
     setPlatformPosition(config.platform);
     setPanelPosition(config.panel);
   };
