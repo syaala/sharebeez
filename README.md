@@ -4,6 +4,8 @@
 
 A production-ready Next.js website for Sharebeez, a community-first platform that helps people beat inflation by collaborating through group purchases, resource sharing, and local commerce.
 
+🌐 **Live Site**: https://syaala.github.io/sharebeez
+
 ## 🚀 Features
 
 - **Modern Tech Stack**: Next.js 15, TypeScript, Tailwind CSS
