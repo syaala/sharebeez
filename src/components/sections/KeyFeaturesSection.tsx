@@ -2,9 +2,10 @@
 
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Users, ShoppingBag, Share2, Calendar, Truck, Plus, Heart, MessageCircle, Star, MapPin, Clock } from 'lucide-react';
+import { Users, ShoppingBag, Share2, Calendar, Truck, Plus, Heart, MessageCircle, Star, MapPin, Clock, DollarSign, TrendingUp, Leaf, Search, Filter, Check } from 'lucide-react';
+import Link from 'next/link';
 
-const KeyFeaturesSection: React.FC = () => {
+const KeyFeaturesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -29,531 +30,154 @@ const KeyFeaturesSection: React.FC = () => {
       id: 'hives',
       icon: <Heart className="w-5 h-5" />,
       title: "My Hives",
-      description: "Community networks",
-      fullDescription: "Discover and join local community hives based on your neighborhood, interests, or needs. Each hive is a micro-community focused on collaboration and mutual support.",
-      benefits: ["Join multiple communities", "Location-based matching", "Interest-based groups", "Verified neighbor networks"]
+      description: "Community group management",
+      fullDescription: "Manage your community groups with intelligent organization tools. AI helps optimize group dynamics, suggests new members, and facilitates smooth coordination for all your shared activities.",
+      benefits: ["Smart group matching", "Automated coordination", "Member recommendations", "Activity optimization", "Conflict resolution"]
     },
     {
       id: 'marketplace',
       icon: <ShoppingBag className="w-5 h-5" />,
-      title: "AI-Powered Marketplace",
-      description: "Smart deals with AI optimization",
-      fullDescription: "Experience intelligent deal suggestions, auto-generated descriptions, and dynamic pricing optimization. Our AI analyzes your preferences and behavior to suggest perfect deals while helping sellers optimize their listings.",
-      benefits: ["AI deal recommendations", "Smart pricing optimization", "Auto-generated descriptions", "Trending deal alerts", "Boost suggestions"]
+      title: "Smart Marketplace",
+      description: "AI-optimized buying & selling",
+      fullDescription: "Experience intelligent commerce with AI-powered deal optimization, smart pricing suggestions, and personalized recommendations that help you save more and sell better.",
+      benefits: ["Dynamic pricing", "Smart recommendations", "Deal optimization", "Fraud detection", "Market insights"]
     },
     {
       id: 'sharing',
       icon: <Share2 className="w-5 h-5" />,
-      title: "Share Hub",
-      description: "Tools & equipment rental",
-      fullDescription: "Borrow and lend tools, equipment, and household items within your community. Why buy when you can share? Reduce waste and save money.",
-      benefits: ["Tool library access", "Peer-to-peer rentals", "Verified owner ratings", "Local pickup & delivery"]
+      title: "Resource Sharing",
+      description: "Community asset optimization",
+      fullDescription: "Maximize community resources with AI-driven sharing recommendations. Smart algorithms match available resources with community needs, reducing waste and increasing accessibility.",
+      benefits: ["Resource matching", "Usage optimization", "Availability tracking", "Smart scheduling", "Impact measurement"]
     },
     {
       id: 'events',
       icon: <Calendar className="w-5 h-5" />,
-      title: "Events",
-      description: "Community gatherings",
-      fullDescription: "Organize and participate in community events, workshops, and social gatherings. Build stronger connections while sharing costs and resources.",
-      benefits: ["Event coordination tools", "RSVP management", "Cost sharing features", "Community building"]
+      title: "Event Coordination",
+      description: "Smart community planning",
+      fullDescription: "Plan and coordinate community events with AI assistance. Get intelligent suggestions for timing, venues, and activities based on community preferences and availability patterns.",
+      benefits: ["Smart scheduling", "Venue optimization", "Attendance prediction", "Activity suggestions", "Resource planning"]
     },
     {
       id: 'delivery',
       icon: <Truck className="w-5 h-5" />,
-      title: "Smart Delivery Network",
-      description: "AI-matched local logistics",
-      fullDescription: "AI-powered driver matching creates an efficient neighbor-to-neighbor delivery network. Smart routing and automated matching optimize delivery times while maximizing earnings for drivers.",
-      benefits: ["AI driver matching", "Smart route optimization", "Automated scheduling", "Dynamic pricing", "Predictive demand mapping"]
+      title: "Delivery Network",
+      description: "Optimized logistics system",
+      fullDescription: "Efficient delivery coordination with AI-powered route optimization and smart matching between drivers and delivery needs. Reduce costs and environmental impact through intelligent logistics.",
+      benefits: ["Route optimization", "Driver matching", "Cost reduction", "Environmental impact", "Real-time tracking"]
     },
     {
       id: 'chat',
       icon: <MessageCircle className="w-5 h-5" />,
-      title: "BeeGuardian AI Chat",
-      description: "Safe, smart communication",
-      fullDescription: "Stay connected with AI-powered safety and guidance. BeeGuardian monitors conversations, provides helpful tips, and ensures a positive community experience while protecting against scams and abuse.",
-      benefits: ["Real-time AI moderation", "Scam protection", "Personalized guidance", "Badge & karma system", "Community safety"]
+      title: "Community Chat",
+      description: "Enhanced communication hub",
+      fullDescription: "Stay connected with your community through AI-enhanced messaging. Smart moderation, translation services, and intelligent notifications keep conversations productive and inclusive.",
+      benefits: ["Smart moderation", "Real-time translation", "Intelligent notifications", "Conversation insights", "Safety monitoring"]
     }
   ];
 
-  // Dashboard Data
-  const dashboardStats = {
-    totalSavings: "$2,847",
-    monthlyOrders: 12,
-    itemsShared: 8,
-    carbonSaved: "156 lbs CO₂"
-  };
-
-  const recentActivity = [
-    { type: "order", text: "Joined bulk rice order", time: "2 hours ago", icon: "🌾" },
-    { type: "share", text: "Borrowed ladder from Lisa", time: "1 day ago", icon: "🪜" },
-    { type: "event", text: "RSVP'd to community BBQ", time: "2 days ago", icon: "🎉" },
-    { type: "delivery", text: "Delivered groceries for Tom", time: "3 days ago", icon: "📦" }
-  ];
-
-  const activeHives = [
-    { name: "Sunset Gardens", members: 47, savings: "$12,450", status: "Very Active", avatar: "🏡", color: "from-green-400 to-green-600" },
-    { name: "Downtown Families", members: 23, savings: "$8,200", status: "Active", avatar: "👨‍👩‍👧‍👦", color: "from-blue-400 to-blue-600" },
-    { name: "Green Valley Co-op", members: 31, savings: "$15,600", status: "Growing", avatar: "🌱", color: "from-mint-400 to-mint-600" }
-  ];
-
-  // Comprehensive Hives Data
-  const allHives = [
-    {
-      id: 1,
-      name: "Sunset Gardens",
-      description: "Family-friendly neighborhood focused on sustainable living",
-      members: 47,
-      totalSavings: "$12,450",
-      monthlyOrders: 23,
-      status: "Very Active",
-      avatar: "🏡",
-      color: "from-green-400 to-green-600",
-      location: "0.2 miles away",
-      categories: ["Groceries", "Tools", "Events"],
-      recentActivity: "Bulk rice order completed",
-      joinedDate: "Member since Jan 2024",
-      isJoined: true
-    },
-    {
-      id: 2,
-      name: "Downtown Families",
-      description: "Urban families sharing resources and building community",
-      members: 23,
-      totalSavings: "$8,200",
-      monthlyOrders: 15,
-      status: "Active",
-      avatar: "👨‍👩‍👧‍👦",
-      color: "from-blue-400 to-blue-600",
-      location: "0.8 miles away",
-      categories: ["Childcare", "Groceries", "Events"],
-      recentActivity: "Playground cleanup organized",
-      joinedDate: "Member since Feb 2024",
-      isJoined: true
-    },
-    {
-      id: 3,
-      name: "Green Valley Co-op",
-      description: "Eco-conscious community promoting environmental sustainability",
-      members: 31,
-      totalSavings: "$15,600",
-      monthlyOrders: 19,
-      status: "Growing",
-      avatar: "🌱",
-      color: "from-mint-400 to-mint-600",
-      location: "1.2 miles away",
-      categories: ["Organic Foods", "Garden Tools", "Workshops"],
-      recentActivity: "Composting workshop scheduled",
-      joinedDate: "Member since Mar 2024",
-      isJoined: true
-    },
-    {
-      id: 4,
-      name: "Tech Professionals Hub",
-      description: "Working professionals sharing resources and networking",
-      members: 18,
-      totalSavings: "$5,400",
-      monthlyOrders: 8,
-      status: "New",
-      avatar: "💻",
-      color: "from-purple-400 to-purple-600",
-      location: "0.5 miles away",
-      categories: ["Office Supplies", "Electronics", "Networking"],
-      recentActivity: "Coffee bulk order starting",
-      joinedDate: "Available to join",
-      isJoined: false
-    },
-    {
-      id: 5,
-      name: "Senior Community Circle",
-      description: "Mature adults supporting each other with daily needs",
-      members: 29,
-      totalSavings: "$9,800",
-      monthlyOrders: 12,
-      status: "Established",
-      avatar: "👴",
-      color: "from-orange-400 to-orange-600",
-      location: "0.7 miles away",
-      categories: ["Healthcare", "Groceries", "Transportation"],
-      recentActivity: "Medication delivery network active",
-      joinedDate: "Available to join",
-      isJoined: false
-    },
-    {
-      id: 6,
-      name: "Student Housing Collective",
-      description: "College students and young professionals sharing resources",
-      members: 34,
-      totalSavings: "$7,200",
-      monthlyOrders: 21,
-      status: "Very Active",
-      avatar: "🎓",
-      color: "from-teal-400 to-teal-600",
-      location: "1.5 miles away",
-      categories: ["Textbooks", "Groceries", "Furniture"],
-      recentActivity: "Textbook exchange event",
-      joinedDate: "Available to join",
-      isJoined: false
-    }
-  ];
-
-  // Comprehensive Marketplace Data
   const marketplaceItems = [
     {
       id: 1,
-      title: "Organic Bulk Rice - 25lb Bags",
-      price: 45,
-      originalPrice: 65,
-      participants: 8,
-      needed: 12,
-      savings: 31,
-      timeLeft: "2 days",
-      organizer: "Sarah Martinez",
-      organizerAvatar: "👩‍🌾",
-      image: "🌾",
-      category: "Groceries",
-      description: "Premium organic jasmine rice, direct from farm",
-      location: "Whole Foods Pickup",
-      status: "active",
-      aiFeatures: {
-        trending: true,
-        aiOptimized: true,
-        smartSuggestion: "Perfect for your family size!",
-        boostRecommended: false,
-        priceOptimal: true
-      }
-    },
-    {
-      id: 2,
-      title: "Premium Olive Oil - 6 Bottle Case",
-      price: 89,
-      originalPrice: 120,
-      participants: 5,
-      needed: 8,
-      savings: 26,
-      timeLeft: "5 days",
-      organizer: "Mike Rodriguez",
-      organizerAvatar: "👨‍🍳",
-      image: "🫒",
-      category: "Pantry",
-      description: "Extra virgin olive oil from local producer",
-      location: "Community Center",
-      status: "active",
-      aiFeatures: {
-        trending: false,
-        aiOptimized: true,
-        smartSuggestion: "Great for cooking enthusiasts!",
-        boostRecommended: true,
-        priceOptimal: false
-      }
-    },
-    {
-      id: 3,
-      title: "Local Raw Honey - 12 Jar Set",
-      price: 72,
-      originalPrice: 96,
-      participants: 9,
-      needed: 10,
-      savings: 25,
-      timeLeft: "1 day",
-      organizer: "Emma Liu",
-      organizerAvatar: "👩‍🔬",
-      image: "🍯",
-      category: "Local Goods",
-      description: "Wildflower honey from neighborhood beekeeper",
-      location: "Farmer's Market",
-      status: "almost_full",
-      aiFeatures: {
-        trending: true,
-        aiOptimized: true,
-        smartSuggestion: "Almost full - join now!",
-        boostRecommended: false,
-        priceOptimal: true
-      }
-    },
-    {
-      id: 4,
-      title: "Eco-Friendly Cleaning Bundle",
-      price: 156,
-      originalPrice: 200,
-      participants: 15,
-      needed: 20,
-      savings: 22,
-      timeLeft: "3 days",
-      organizer: "David Kim",
-      organizerAvatar: "👨‍💼",
-      image: "🧽",
-      category: "Household",
-      description: "Complete eco-friendly cleaning products bundle",
-      location: "Green Clean Co.",
-      status: "active"
-    }
-  ];
-
-  // Comprehensive Sharing Hub Data
-  const sharingItems = [
-    {
-      id: 1,
-      title: "Professional Power Drill Set",
-      owner: "John Davis",
-      ownerAvatar: "👨‍🔧",
-      price: 5,
+      name: "Organic Raw Honey - Local Harvest",
+      price: "$12.99",
+      originalPrice: "$18.99",
+      savings: "32% off",
+      seller: "Sarah's Apiary",
       rating: 4.9,
-      reviews: 23,
-      available: true,
-      distance: 0.3,
-      image: "🔧",
-      category: "Tools",
-      description: "Complete drill set with bits and case",
-      nextAvailable: "Available now",
-      features: ["Variable speed", "LED light", "Carrying case", "Multiple bits"]
+      reviews: 127,
+      image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=100&h=100&fit=crop&crop=center",
+      category: "Food & Beverages",
+      location: "2.3 miles away",
+      inStock: 15,
+      groupBuy: true,
+      minOrder: 5,
+      currentOrders: 8,
+      verified: true,
+      organic: true
     },
     {
       id: 2,
-      title: "8ft Extension Ladder",
-      owner: "Lisa Kumar",
-      ownerAvatar: "👩‍🏭",
-      price: 8,
-      rating: 5.0,
-      reviews: 15,
-      available: true,
-      distance: 0.5,
-      image: "🪜",
-      category: "Tools",
-      description: "Lightweight aluminum ladder, perfect for home projects",
-      nextAvailable: "Available now",
-      features: ["Aluminum construction", "250lb capacity", "Non-slip feet", "Compact storage"]
-    },
-    {
-      id: 3,
-      title: "Electric Pressure Washer",
-      owner: "Tom Brown",
-      ownerAvatar: "👨‍🦳",
-      price: 15,
+      name: "DeWalt 20V MAX Cordless Drill Kit",
+      price: "$89.99",
+      originalPrice: "$129.99",
+      savings: "31% off",
+      seller: "Mike's Tools",
       rating: 4.8,
-      reviews: 31,
-      available: false,
-      distance: 0.7,
-      image: "💨",
-      category: "Tools",
-      description: "High-pressure washer for driveways and decks",
-      nextAvailable: "Available March 15",
-      features: ["2000 PSI", "Multiple nozzles", "Soap dispenser", "25ft hose"]
-    },
-    {
-      id: 4,
-      title: "Stand Mixer - KitchenAid",
-      owner: "Maria Santos",
-      ownerAvatar: "👩‍🍳",
-      price: 12,
-      rating: 4.9,
-      reviews: 18,
-      available: true,
-      distance: 0.4,
-      image: "🥧",
-      category: "Kitchen",
-      description: "Professional stand mixer for baking projects",
-      nextAvailable: "Available now",
-      features: ["6-quart bowl", "10 speeds", "Multiple attachments", "Tilt-head design"]
-    }
-  ];
-
-  // Comprehensive Events Data
-  const upcomingEvents = [
-    {
-      id: 1,
-      title: "Community Spring BBQ",
-      date: "March 15, 2024",
-      time: "2:00 PM - 6:00 PM",
-      location: "Sunset Gardens Park",
-      organizer: "Sarah Martinez",
-      organizerAvatar: "👩‍🌾",
-      attendees: 47,
-      maxAttendees: 60,
-      image: "🎉",
-      category: "Social",
-      description: "Annual spring celebration with potluck and games for the whole family",
-      rsvpStatus: "going",
-      cost: "Free",
-      whatToBring: "Side dish or dessert to share"
-    },
-    {
-      id: 2,
-      title: "Tool Library Workshop",
-      date: "March 18, 2024",
-      time: "10:00 AM - 12:00 PM",
-      location: "Community Center",
-      organizer: "John Davis",
-      organizerAvatar: "👨‍🔧",
-      attendees: 12,
-      maxAttendees: 15,
-      image: "🔧",
-      category: "Educational",
-      description: "Learn proper tool usage, safety, and maintenance techniques",
-      rsvpStatus: "interested",
-      cost: "$5 materials fee",
-      whatToBring: "Notebook and any tools you'd like help with"
+      reviews: 89,
+      image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=100&h=100&fit=crop&crop=center",
+      category: "Tools & Hardware",
+      location: "1.8 miles away",
+      inStock: 3,
+      groupBuy: false,
+      verified: true,
+      condition: "Like New"
     },
     {
       id: 3,
-      title: "Neighborhood Cleanup Day",
-      date: "March 22, 2024",
-      time: "9:00 AM - 1:00 PM",
-      location: "Various Locations",
-      organizer: "Emma Liu",
-      organizerAvatar: "👩‍🔬",
-      attendees: 28,
-      maxAttendees: 40,
-      image: "🌱",
-      category: "Community Service",
-      description: "Monthly neighborhood beautification and environmental care",
-      rsvpStatus: null,
-      cost: "Free",
-      whatToBring: "Work gloves and water bottle"
-    },
-    {
-      id: 4,
-      title: "Bulk Buying Coordination Meeting",
-      date: "March 25, 2024",
-      time: "7:00 PM - 8:30 PM",
-      location: "Virtual + Community Center",
-      organizer: "Mike Rodriguez",
-      organizerAvatar: "👨‍🍳",
-      attendees: 19,
-      maxAttendees: 25,
-      image: "🛒",
-      category: "Planning",
-      description: "Plan next month's bulk purchases and coordinate delivery",
-      rsvpStatus: "going",
-      cost: "Free",
-      whatToBring: "Shopping list ideas"
+      name: "Organic Vegetable CSA Box",
+      price: "$24.99",
+      originalPrice: "$34.99",
+      savings: "29% off",
+      seller: "Green Valley Farm",
+      rating: 4.7,
+      reviews: 203,
+      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=100&h=100&fit=crop&crop=center",
+      category: "Food & Beverages",
+      location: "3.1 miles away",
+      inStock: 25,
+      groupBuy: true,
+      minOrder: 10,
+      currentOrders: 12,
+      verified: true,
+      organic: true,
+      nextDelivery: "This Friday"
     }
   ];
 
-  // Comprehensive Delivery Network Data
-  const deliveryRequests = [
+  const hiveData = [
     {
       id: 1,
-      type: "Grocery Pickup",
-      from: "Whole Foods Market",
-      to: "Sunset Gardens",
-      reward: 8,
-      distance: 0.5,
-      timeWindow: "Today 4-6 PM",
-      items: "3 bags groceries",
-      weight: "Light",
-      requester: "Maria Santos",
-      requesterAvatar: "👩‍🍳",
-      status: "available",
-      urgency: "normal",
-      notes: "Refrigerated items included"
+      name: "🏡 Maple Street Neighbors",
+      lastMessage: "New bulk order for organic rice - 40% savings!",
+      lastSender: "Emma Wilson",
+      timestamp: "5 min ago",
+      unread: 2,
+      members: 24,
+      type: "neighborhood",
+      pinned: true
     },
     {
       id: 2,
-      type: "Package Delivery",
-      from: "UPS Store",
-      to: "Downtown Apartments",
-      reward: 5,
-      distance: 1.2,
-      timeWindow: "Tomorrow 10-12 PM",
-      items: "2 small packages",
-      weight: "Light",
-      requester: "David Kim",
-      requesterAvatar: "👨‍💼",
-      status: "available",
-      urgency: "low",
-      notes: "Signature required"
-    },
-    {
-      id: 3,
-      type: "Farmer's Market Run",
-      from: "Saturday Market",
-      to: "Green Valley",
-      reward: 12,
-      distance: 2.1,
-      timeWindow: "Saturday 8-10 AM",
-      items: "Fresh produce order",
-      weight: "Medium",
-      requester: "Lisa Kumar",
-      requesterAvatar: "👩‍🏭",
-      status: "claimed",
-      urgency: "high",
-      notes: "Early morning pickup preferred"
-    },
-    {
-      id: 4,
-      type: "Tool Return",
-      from: "Green Valley",
-      to: "Sunset Gardens",
-      reward: 3,
-      distance: 0.8,
-      timeWindow: "This weekend",
-      items: "Power drill set",
-      weight: "Medium",
-      requester: "Tom Brown",
-      requesterAvatar: "👨‍🦳",
-      status: "available",
-      urgency: "low",
-      notes: "Flexible timing"
-    }
-  ];
-
-  // Comprehensive Chat Data
-  const chatChannels = [
-    {
-      id: 1,
-      name: "🏡 Sunset Gardens General",
-      lastMessage: "Thanks for organizing the BBQ! Can't wait 🎉",
-      lastSender: "Mike Rodriguez",
-      timestamp: "2 min ago",
-      unread: 3,
-      members: 47,
-      type: "community",
-      pinned: true,
-      aiFeatures: {
-        moderated: true,
-        sentiment: "positive",
-        beeGuardianActive: true,
-        safetyScore: 98
-      }
-    },
-    {
-      id: 2,
-      name: "🛒 Bulk Buying Group",
-      lastMessage: "Rice order is almost full! 2 spots left",
-      lastSender: "Sarah Martinez",
-      timestamp: "15 min ago",
-      unread: 1,
-      members: 23,
-      type: "marketplace",
-      pinned: false,
-      aiFeatures: {
-        moderated: true,
-        sentiment: "neutral",
-        beeGuardianActive: true,
-        safetyScore: 95,
-        aiSuggestion: "Consider boosting this deal!"
-      }
-    },
-    {
-      id: 3,
-      name: "🔧 Tool Share Network",
-      lastMessage: "Ladder available this weekend if anyone needs",
-      lastSender: "John Davis",
+      name: "🌱 Eco Warriors",
+      lastMessage: "Composting workshop this Saturday at 2 PM",
+      lastSender: "David Chen",
       timestamp: "1 hour ago",
       unread: 0,
-      members: 31,
-      type: "sharing",
+      members: 156,
+      type: "interest",
       pinned: false
     },
     {
-      id: 4,
-      name: "🚚 Local Delivery Coordination",
-      lastMessage: "I can help with the Whole Foods run today",
-      lastSender: "Emma Liu",
+      id: 3,
+      name: "👨‍👩‍👧‍👦 Parent Network",
+      lastMessage: "Babysitting exchange schedule updated",
+      lastSender: "Maria Rodriguez",
       timestamp: "2 hours ago",
-      unread: 2,
-      members: 18,
-      type: "delivery",
+      unread: 1,
+      members: 89,
+      type: "family",
+      pinned: true
+    },
+    {
+      id: 4,
+      name: "🔧 Tool Library",
+      lastMessage: "Lawn mower available for weekend borrowing",
+      lastSender: "John Smith",
+      timestamp: "4 hours ago",
+      unread: 0,
+      members: 67,
+      type: "sharing",
       pinned: false
     },
     {
@@ -581,32 +205,32 @@ const KeyFeaturesSection: React.FC = () => {
     // Move platform to side and position feature panel alongside
     const configurations = {
       dashboard: {
-        platform: { x: -120, y: 0, rotation: -1, scale: 0.9 },
-        panel: { side: 'right', x: 0, y: 0 }
+        platform: { x: -200, y: 0, rotation: -2, scale: 0.85 },
+        panel: { side: 'right', x: 50, y: 0 }
       },
       hives: {
-        platform: { x: 120, y: -5, rotation: 1, scale: 0.9 },
-        panel: { side: 'left', x: 0, y: 0 }
+        platform: { x: 200, y: -10, rotation: 2, scale: 0.85 },
+        panel: { side: 'left', x: -50, y: 0 }
       },
       marketplace: {
-        platform: { x: -120, y: 10, rotation: -1, scale: 0.9 },
-        panel: { side: 'right', x: 0, y: 0 }
+        platform: { x: -200, y: 15, rotation: -2, scale: 0.85 },
+        panel: { side: 'right', x: 50, y: 0 }
       },
       sharing: {
-        platform: { x: 120, y: -15, rotation: 1, scale: 0.9 },
-        panel: { side: 'left', x: 0, y: 0 }
+        platform: { x: 200, y: -20, rotation: 2, scale: 0.85 },
+        panel: { side: 'left', x: -50, y: 0 }
       },
       events: {
-        platform: { x: -120, y: 20, rotation: -1, scale: 0.9 },
-        panel: { side: 'right', x: 0, y: 0 }
+        platform: { x: -200, y: 25, rotation: -2, scale: 0.85 },
+        panel: { side: 'right', x: 50, y: 0 }
       },
       delivery: {
-        platform: { x: 120, y: 8, rotation: 1, scale: 0.9 },
-        panel: { side: 'left', x: 0, y: 0 }
+        platform: { x: 200, y: 10, rotation: 2, scale: 0.85 },
+        panel: { side: 'left', x: -50, y: 0 }
       },
       chat: {
-        platform: { x: -120, y: -10, rotation: -1, scale: 0.9 },
-        panel: { side: 'right', x: 0, y: 0 }
+        platform: { x: -200, y: -15, rotation: -2, scale: 0.85 },
+        panel: { side: 'right', x: 50, y: 0 }
       }
     };
 
@@ -623,1168 +247,677 @@ const KeyFeaturesSection: React.FC = () => {
           animate={{
             x: [0, 50, 0],
             y: [0, -30, 0],
-            scale: [1, 1.1, 1],
-            rotate: [0, 180, 360]
+            rotate: [0, 5, 0]
           }}
           transition={{
             duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full blur-2xl"
-        ></motion.div>
+          className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full blur-xl"
+        />
         <motion.div
           animate={{
             x: [0, -40, 0],
-            y: [0, 40, 0],
-            scale: [1, 0.9, 1],
-            rotate: [0, -90, -180]
+            y: [0, 25, 0],
+            rotate: [0, -3, 0]
           }}
           transition={{
             duration: 25,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 10
+            delay: 2
           }}
-          className="absolute bottom-20 right-10 w-40 h-40 bg-white rounded-full blur-3xl"
-        ></motion.div>
-
-        {/* Floating Feature Icons */}
+          className="absolute top-40 right-20 w-24 h-24 bg-white rounded-full blur-lg"
+        />
         <motion.div
           animate={{
+            x: [0, 30, 0],
             y: [0, -20, 0],
-            rotate: [0, 10, 0],
-            opacity: activeTab === 'marketplace' ? [0.3, 0.6, 0.3] : 0.2
+            rotate: [0, 8, 0]
           }}
           transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/4 left-1/4 text-4xl"
-        >
-          🛒
-        </motion.div>
-        <motion.div
-          animate={{
-            y: [0, 15, 0],
-            rotate: [0, -8, 0],
-            opacity: activeTab === 'sharing' ? [0.3, 0.6, 0.3] : 0.2
-          }}
-          transition={{
-            duration: 10,
+            duration: 30,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 3
+            delay: 4
           }}
-          className="absolute top-1/3 right-1/3 text-3xl"
-        >
-          🔧
-        </motion.div>
+          className="absolute bottom-40 left-1/4 w-40 h-40 bg-white rounded-full blur-2xl"
+        />
         <motion.div
           animate={{
-            y: [0, -12, 0],
-            rotate: [0, 5, 0],
-            opacity: activeTab === 'events' ? [0.3, 0.6, 0.3] : 0.2
+            x: [0, -25, 0],
+            y: [0, 35, 0],
+            rotate: [0, -6, 0]
           }}
           transition={{
-            duration: 12,
+            duration: 22,
             repeat: Infinity,
             ease: "easeInOut",
             delay: 6
           }}
-          className="absolute bottom-1/3 left-1/3 text-3xl"
-        >
-          🎉
-        </motion.div>
+          className="absolute bottom-20 right-1/3 w-28 h-28 bg-white rounded-full blur-xl"
+        />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          {/* Header with Who We Are Integration */}
-          <div className="text-center mb-8 lg:mb-12">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.8 }}
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 lg:mb-6 leading-tight drop-shadow-lg"
-            >
-              Meet Sharebeez
-              <span className="block text-yellow-200 drop-shadow-lg">
-                Your Community Platform
-              </span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg lg:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8"
-            >
-              A community-first platform that helps people beat inflation by collaborating.
-              Buy in bulk, share tools, organize events, and support local vendors — all while building stronger neighborhood connections.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 border border-white/30"
-            >
-              <span className="text-yellow-200 font-bold">✨ Click features to explore</span>
-            </motion.div>
-          </div>
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-mint-500 to-lavender-500 bg-clip-text text-transparent">
+              See Sharebeez
+            </span>
+            <span className="block text-gray-900">In Action</span>
+          </h2>
+          <p className="text-lg lg:text-xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+            Experience the future of community commerce. Click on any feature to see how our platform transforms the way neighbors connect, share, and save together.
+          </p>
+        </motion.div>
 
-          {/* Side Feature Panel */}
-          {showFeaturePanel && (
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0.9,
-                x: panelPosition.side === 'left' ? -100 : 100,
-                y: 20
-              }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                x: 0,
-                y: 0
-              }}
-              exit={{
-                opacity: 0,
-                scale: 0.9,
-                x: panelPosition.side === 'left' ? -100 : 100,
-                y: 20
-              }}
-              transition={{ duration: 0.5, type: "spring", bounce: 0.1 }}
-              className={`absolute z-40 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 p-4 w-72 ${
-                panelPosition.side === 'left' ? 'left-0' : 'right-0'
+        {/* Feature Navigation Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-3 mb-12"
+        >
+          {features.map((feature, index) => (
+            <motion.button
+              key={feature.id}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              onClick={() => handleTabSwitch(feature.id)}
+              className={`group relative flex items-center space-x-2 px-4 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 ${
+                activeTab === feature.id
+                  ? 'bg-white text-gray-900 shadow-lg ring-2 ring-mint-300'
+                  : 'bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/20'
               }`}
-              style={{
-                top: '20px',
-                height: '320px',
-                maxHeight: '320px'
-              }}
             >
-              <motion.div
-                initial={{ y: 30 }}
-                animate={{ y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                className="relative h-full flex flex-col"
-              >
-                {/* Header */}
-                <div className="mb-4">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-mint-500 to-lavender-500 rounded-xl flex items-center justify-center text-white shadow-lg">
-                      {features.find(f => f.id === activeTab)?.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-gray-900">
-                        {features.find(f => f.id === activeTab)?.title}
-                      </h3>
-                      <p className="text-sm text-gray-600">
-                        {features.find(f => f.id === activeTab)?.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <span className={`transition-colors duration-300 ${
+                activeTab === feature.id ? 'text-mint-600' : 'text-white'
+              }`}>
+                {feature.icon}
+              </span>
+              <span className="text-sm">{feature.title}</span>
 
-                {/* Content */}
-                <div className="flex-1 overflow-y-auto">
-                  <p className="text-gray-700 mb-4 text-sm leading-relaxed">
-                    {features.find(f => f.id === activeTab)?.fullDescription}
-                  </p>
+              {/* Active indicator */}
+              {activeTab === feature.id && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute inset-0 bg-white rounded-xl shadow-lg -z-10"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+            </motion.button>
+          ))}
+        </motion.div>
 
-                  {/* Benefits Section */}
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3">
-                    <h4 className="font-bold text-gray-900 mb-3 text-sm flex items-center">
-                      <span className="w-2 h-2 bg-gradient-to-br from-mint-500 to-lavender-500 rounded-full mr-2"></span>
-                      Key Benefits
-                    </h4>
-                    <div className="space-y-2">
-                      {features.find(f => f.id === activeTab)?.benefits.slice(0, 4).map((benefit, index) => (
-                        <div
-                          key={index}
-                          className="flex items-start text-gray-700 text-xs"
-                        >
-                          ></div>
-                          <span className="font-medium">{benefit}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+        {/* Main Platform Demo Area */}
+        <div className="relative max-w-7xl mx-auto">
+          <div className="flex justify-center items-center min-h-[700px] relative">
 
-                {/* Action Button */}
-                <div className="mt-4">
-                  <button
-                    onClick={() => setShowFeaturePanel(false)}
-                    className="w-full bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 text-sm"
-                  >
-                    ← Back to Platform
-                  </button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-
-          {/* Platform Container with Side Panel Layout */}
-          <div className="relative max-w-6xl mx-auto overflow-visible" style={{ minHeight: '500px' }}>
+            {/* Interactive Platform Interface */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
               animate={{
-                opacity: isInView ? 1 : 0,
-                y: isInView ? 0 : 40,
                 x: platformPosition.x,
+                y: platformPosition.y,
                 rotate: platformPosition.rotation,
                 scale: platformPosition.scale || 1
               }}
-              transition={{
-                opacity: { duration: 1, delay: 0.6 },
-                y: { duration: 1, delay: 0.6 },
-                x: { duration: 1, type: "spring", bounce: 0.2 },
-                rotate: { duration: 1, type: "spring", bounce: 0.2 },
-                scale: { duration: 1, type: "spring", bounce: 0.2 }
-              }}
-              className="bg-white rounded-3xl shadow-2xl border border-white/20 overflow-hidden relative origin-center"
-              style={{ height: '500px' }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              className="relative z-20"
             >
-            {/* Platform Header */}
-            <div className="bg-gradient-to-r from-mint-500 to-lavender-500 p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8">
-                    <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <ellipse cx="50" cy="55" rx="18" ry="25" fill="white"></ellipse>
-                      <ellipse cx="35" cy="40" rx="12" ry="18" fill="rgba(255,255,255,0.8)"></ellipse>
-                      <ellipse cx="65" cy="40" rx="12" ry="18" fill="rgba(255,255,255,0.8)"></ellipse>
-                    </svg>
+              <div className="w-96 h-[600px] bg-white rounded-2xl shadow-2xl border border-gray-300 overflow-hidden backdrop-blur-sm">
+                {/* Browser Header */}
+                <div className="bg-gray-100 h-8 flex items-center px-3 border-b border-gray-200">
+                  <div className="flex items-center space-x-2">
+                    <div className="flex space-x-1">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div className="flex-1 bg-white rounded-md h-5 flex items-center px-2 ml-4">
+                      <span className="text-xs text-gray-600">sharebeez.com/dashboard</span>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white">Sharebeez</h3>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <button className="relative bg-white/20 rounded-lg p-2 hover:bg-white/30 transition-colors">
-                    <span className="text-white text-lg">🔔</span>
-                    {notifications > 0 && (
-                      <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                        {notifications}
-                      </span>
-                    )}
-                  </button>
-                  <div className="bg-white/20 rounded-lg px-3 py-2">
-                    <span className="text-white text-sm font-medium">🏡 Sunset Gardens</span>
-                  </div>
-                  <button className="bg-white/20 rounded-lg p-2 hover:bg-white/30 transition-colors">
-                    <span className="text-white text-lg">👤</span>
-                  </button>
-                </div>
-              </div>
-            </div>
 
-            {/* Main Platform Layout */}
-            <div className="flex h-full">
-              {/* Sidebar Navigation */}
-              <div className="w-64 bg-gray-50 border-r border-gray-200 p-4">
-                <nav className="space-y-2">
-                  {features.map((feature) => (
-                    <motion.button
-                      key={feature.id}
-                      onClick={() => handleTabSwitch(feature.id)}
-                      whileHover={{ scale: 1.02, x: 4 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
-                        activeTab === feature.id
-                          ? 'bg-gradient-to-r from-mint-500 to-lavender-500 text-white shadow-lg transform scale-105'
-                          : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:shadow-md'
-                      }`}
-                    >
-                      <motion.div
-                        animate={{
-                          rotate: activeTab === feature.id ? [0, 10, -10, 0] : 0,
-                          scale: activeTab === feature.id ? [1, 1.1, 1] : 1
-                        }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        {feature.icon}
-                      </motion.div>
-                      <div className="text-left">
-                        <div className="font-medium text-sm">{feature.title}</div>
-                        <div className={`text-xs ${activeTab === feature.id ? 'text-white/80' : 'text-gray-500'}`}>
-                          {feature.description}
+                {/* App Navigation Header */}
+                <div className="bg-white border-b border-gray-200 px-4 py-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-gradient-to-r from-mint-500 to-lavender-500 rounded-lg flex items-center justify-center">
+                        <span className="text-sm font-bold text-white">🐝</span>
+                      </div>
+                      <div>
+                        <span className="font-bold text-lg text-gray-900">Sharebeez</span>
+                        <div className="text-xs text-gray-500">Community Platform</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="relative">
+                        <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors">
+                          <MessageCircle className="w-4 h-4 text-gray-600" />
                         </div>
+                        {notifications > 0 && (
+                          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+                            <span className="text-xs text-white font-bold">{notifications}</span>
+                          </div>
+                        )}
                       </div>
-                      {activeTab === feature.id && (
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className="ml-auto w-2 h-2 bg-yellow-300 rounded-full"
+                      <button
+                        onClick={() => setIsProfileOpen(!isProfileOpen)}
+                        className="w-8 h-8 rounded-lg overflow-hidden border-2 border-gray-200 hover:border-mint-300 transition-colors"
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face"
+                          alt="Profile"
+                          className="w-full h-full object-cover"
                         />
-                      )}
-                    </motion.button>
-                  ))}
-                </nav>
-                
-                {/* Quick Stats */}
-                <div className="mt-8 p-4 bg-white rounded-xl border border-gray-200">
-                  <h4 className="font-bold text-gray-900 mb-3 text-sm">Your Impact</h4>
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-xs">
-                      <span className="text-gray-600">Total Saved</span>
-                      <span className="font-bold text-green-600">{dashboardStats.totalSavings}</span>
-                    </div>
-                    <div className="flex justify-between text-xs">
-                      <span className="text-gray-600">CO₂ Reduced</span>
-                      <span className="font-bold text-green-600">{dashboardStats.carbonSaved}</span>
+                      </button>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Main Content Area */}
-              <div className="flex-1 p-4 overflow-y-auto" style={{ height: '400px' }}>
-                {/* Dashboard Tab */}
-                {activeTab === 'dashboard' && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-3"
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-lg font-bold text-gray-900">Welcome back, Alex! 👋</h4>
-                      <div className="text-xs text-gray-600">March 12, 2024</div>
-                    </div>
+                {/* Navigation Tabs */}
+                <div className="bg-white border-b border-gray-200 px-4">
+                  <div className="flex space-x-6">
+                    {features.slice(0, 4).map((feature) => (
+                      <button
+                        key={feature.id}
+                        onClick={() => handleTabSwitch(feature.id)}
+                        className={`py-3 text-sm font-medium border-b-2 transition-colors ${
+                          activeTab === feature.id
+                            ? 'border-mint-500 text-mint-600'
+                            : 'border-transparent text-gray-500 hover:text-gray-700'
+                        }`}
+                      >
+                        {feature.title.split(' ')[0]}
+                      </button>
+                    ))}
+                    <div className="flex-1"></div>
+                    <button className="py-3 text-sm text-gray-400">
+                      <span className="text-xs">More</span>
+                    </button>
+                  </div>
+                </div>
 
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-4">
-                      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-2 border border-green-200">
-                        <div className="text-lg font-black text-green-600">{dashboardStats.totalSavings}</div>
-                        <div className="text-xs text-green-700 font-medium">Total Saved</div>
+                {/* Dynamic Content Based on Active Tab */}
+                <div className="p-4 h-[480px] bg-gray-50">
+                  {activeTab === 'dashboard' && (
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-bold text-lg text-gray-900">Dashboard</h3>
+                        <div className="text-xs text-gray-500">Last updated: 2 min ago</div>
                       </div>
-                      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-2 border border-blue-200">
-                        <div className="text-lg font-black text-blue-600">{dashboardStats.monthlyOrders}</div>
-                        <div className="text-xs text-blue-700 font-medium">Orders This Month</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-2 border border-purple-200">
-                        <div className="text-lg font-black text-purple-600">{dashboardStats.itemsShared}</div>
-                        <div className="text-xs text-purple-700 font-medium">Items Shared</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-mint-50 to-mint-100 rounded-lg p-2 border border-mint-200">
-                        <div className="text-lg font-black text-mint-600">{dashboardStats.carbonSaved}</div>
-                        <div className="text-xs text-mint-700 font-medium">Carbon Saved</div>
-                      </div>
-                    </div>
 
-                    {/* Active Hives */}
-                    <div className="bg-white rounded-lg border border-gray-200 p-3">
-                      <h5 className="font-semibold text-gray-900 mb-2 text-sm">Your Active Hives</h5>
-                      <div className="space-y-2">
-                        {activeHives.slice(0, 2).map((hive, index) => (
-                          <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
-                            <div className="flex items-center space-x-2">
-                              <div className={`w-6 h-6 bg-gradient-to-br ${hive.color} rounded-full flex items-center justify-center text-xs`}>
-                                {hive.avatar}
-                              </div>
-                              <div>
-                                <div className="font-medium text-gray-900 text-xs">{hive.name}</div>
-                                <div className="text-xs text-gray-600">{hive.members} members</div>
-                              </div>
+                      {/* Stats Grid */}
+                      <div className="grid grid-cols-2 gap-2 mb-4">
+                        <div className="bg-white rounded-lg p-3 shadow-sm border border-gray-200">
+                          <div className="flex items-center space-x-2 mb-2">
+                            <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                              <DollarSign className="w-4 h-4 text-green-600" />
                             </div>
-                            <div className="text-right">
-                              <div className="font-bold text-green-600 text-xs">{hive.savings}</div>
+                            <div>
+                              <div className="text-xl font-bold text-green-600">$2,847</div>
+                              <div className="text-xs text-gray-600">Total Saved</div>
                             </div>
                           </div>
-                        ))}
-                      </div>
-                    </div>
+                          <div className="text-xs text-green-600 font-medium">+$127 this week</div>
+                        </div>
 
-                    {/* Recent Activity */}
-                    <div className="bg-white rounded-lg border border-gray-200 p-3">
-                      <h5 className="font-semibold text-gray-900 mb-2 text-sm">Recent Activity</h5>
+                        <div className="bg-white rounded-lg p-3 shadow-sm border border-gray-200">
+                          <div className="flex items-center space-x-2 mb-1">
+                            <div className="w-6 h-6 bg-blue-100 rounded-lg flex items-center justify-center">
+                              <ShoppingBag className="w-3 h-3 text-blue-600" />
+                            </div>
+                            <div>
+                              <div className="text-lg font-bold text-blue-600">28</div>
+                              <div className="text-xs text-gray-600">Active Orders</div>
+                            </div>
+                          </div>
+                          <div className="text-xs text-blue-600 font-medium">3 arriving today</div>
+                        </div>
+
+                        <div className="bg-white rounded-lg p-3 shadow-sm border border-gray-200">
+                          <div className="flex items-center space-x-2 mb-1">
+                            <div className="w-6 h-6 bg-purple-100 rounded-lg flex items-center justify-center">
+                              <Users className="w-3 h-3 text-purple-600" />
+                            </div>
+                            <div>
+                              <div className="text-lg font-bold text-purple-600">4</div>
+                              <div className="text-xs text-gray-600">My Hives</div>
+                            </div>
+                          </div>
+                          <div className="text-xs text-purple-600 font-medium">2 new invites</div>
+                        </div>
+
+                        <div className="bg-white rounded-lg p-3 shadow-sm border border-gray-200">
+                          <div className="flex items-center space-x-2 mb-1">
+                            <div className="w-6 h-6 bg-orange-100 rounded-lg flex items-center justify-center">
+                              <Heart className="w-3 h-3 text-orange-600" />
+                            </div>
+                            <div>
+                              <div className="text-lg font-bold text-orange-600">89%</div>
+                              <div className="text-xs text-gray-600">Impact Score</div>
+                            </div>
+                          </div>
+                          <div className="text-xs text-orange-600 font-medium">Top 10% locally</div>
+                        </div>
+                      </div>
+
+                      {/* AI Insights */}
                       <div className="space-y-2">
-                        {recentActivity.slice(0, 3).map((activity, index) => (
-                          <div key={index} className="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg transition-colors">
-                            <div className="w-5 h-5 bg-gray-100 rounded-full flex items-center justify-center text-xs">
-                              {activity.icon}
+                        <h4 className="text-sm font-semibold text-gray-900 flex items-center space-x-2">
+                          <div className="w-3 h-3 bg-gradient-to-r from-mint-500 to-lavender-500 rounded-full"></div>
+                          <span>AI Insights</span>
+                        </h4>
+
+                        <div className="bg-white rounded-lg p-3 border border-blue-200 shadow-sm">
+                          <div className="flex items-start space-x-2">
+                            <div className="w-6 h-6 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <TrendingUp className="w-3 h-3 text-blue-600" />
                             </div>
                             <div className="flex-1">
-                              <div className="text-xs text-gray-900">{activity.text}</div>
-                              <div className="text-xs text-gray-500">{activity.time}</div>
+                              <div className="text-xs font-medium text-gray-900 mb-1">Smart Opportunity</div>
+                              <p className="text-xs text-gray-600 mb-2">Join the organic rice bulk order to save $18. Only 2 spots left!</p>
+                              <button className="text-xs bg-blue-500 text-white px-2 py-1 rounded">Join Now</button>
                             </div>
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Comprehensive My Hives Tab */}
-                {activeTab === 'hives' && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-3"
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <h4 className="text-lg font-bold text-gray-900">My Hives</h4>
-                      <button className="bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-3 py-1 rounded-lg font-medium hover:shadow-lg transition-all duration-300 text-sm">
-                        + Discover
-                      </button>
-                    </div>
-
-                    {/* Hive Stats */}
-                    <div className="grid grid-cols-3 gap-2 mb-3">
-                      <div className="bg-gradient-to-br from-mint-50 to-mint-100 rounded-lg p-2 border border-mint-200">
-                        <div className="text-lg font-black text-mint-600">3</div>
-                        <div className="text-xs text-mint-700 font-medium">Active Hives</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-lavender-50 to-lavender-100 rounded-lg p-2 border border-lavender-200">
-                        <div className="text-lg font-black text-lavender-600">101</div>
-                        <div className="text-xs text-lavender-700 font-medium">Total Neighbors</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-2 border border-yellow-200">
-                        <div className="text-lg font-black text-yellow-600">$36K</div>
-                        <div className="text-xs text-yellow-700 font-medium">Combined Savings</div>
-                      </div>
-                    </div>
-
-                    {/* Filter Tabs */}
-                    <div className="flex space-x-2 border-b border-gray-200">
-                      {['My Hives', 'Nearby', 'Recommended', 'All'].map((filter) => (
-                        <button
-                          key={filter}
-                          className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-                            filter === 'My Hives'
-                              ? 'border-mint-500 text-mint-600'
-                              : 'border-transparent text-gray-600 hover:text-gray-900'
-                          }`}
-                        >
-                          {filter}
-                        </button>
-                      ))}
-                    </div>
-
-                    <div className="grid gap-4">
-                      {allHives.map((hive) => (
-                        <motion.div
-                          key={hive.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: hive.id * 0.1 }}
-                          className={`bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden ${
-                            hive.isJoined ? 'ring-2 ring-mint-200' : ''
-                          }`}
-                        >
-                          <div className="p-6">
-                            <div className="flex items-start justify-between">
-                              <div className="flex space-x-4">
-                                <div className={`w-20 h-20 bg-gradient-to-br ${hive.color} rounded-2xl flex items-center justify-center text-3xl text-white shadow-lg relative`}>
-                                  {hive.avatar}
-                                  {hive.isJoined && (
-                                    <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-                                      ✓ Joined
-                                    </div>
-                                  )}
-                                </div>
-                                <div className="flex-1">
-                                  <div className="flex items-center space-x-2 mb-2">
-                                    <h5 className="font-bold text-gray-900 text-lg">{hive.name}</h5>
-                                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                                      hive.status === 'Very Active' ? 'bg-green-100 text-green-600' :
-                                      hive.status === 'Active' ? 'bg-blue-100 text-blue-600' :
-                                      hive.status === 'Growing' ? 'bg-yellow-100 text-yellow-600' :
-                                      hive.status === 'Established' ? 'bg-purple-100 text-purple-600' :
-                                      'bg-gray-100 text-gray-600'
-                                    }`}>
-                                      {hive.status}
-                                    </span>
-                                  </div>
-                                  <p className="text-sm text-gray-600 mb-3">{hive.description}</p>
-                                  <div className="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
-                                    <div>
-                                      <span className="font-medium">Members:</span> {hive.members}
-                                    </div>
-                                    <div>
-                                      <span className="font-medium">Location:</span> {hive.location}
-                                    </div>
-                                    <div>
-                                      <span className="font-medium">Total Savings:</span> {hive.totalSavings}
-                                    </div>
-                                    <div>
-                                      <span className="font-medium">Monthly Orders:</span> {hive.monthlyOrders}
-                                    </div>
-                                  </div>
-                                  <div className="flex flex-wrap gap-2 mb-3">
-                                    {hive.categories.map((category, index) => (
-                                      <span key={index} className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs font-medium">
-                                        {category}
-                                      </span>
-                                    ))}
-                                  </div>
-                                  <div className="bg-gray-50 rounded-lg p-3">
-                                    <div className="text-sm font-medium text-gray-700 mb-1">Recent Activity:</div>
-                                    <div className="text-sm text-gray-600">{hive.recentActivity}</div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="text-right">
-                                <div className="text-sm text-gray-600 mb-4">{hive.joinedDate}</div>
-                                <button
-                                  className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 ${
-                                    hive.isJoined
-                                      ? 'bg-green-100 text-green-600 border border-green-200'
-                                      : 'bg-gradient-to-r from-mint-500 to-lavender-500 text-white hover:shadow-lg'
-                                  }`}
-                                >
-                                  {hive.isJoined ? '✓ Member' : 'Join Hive'}
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Enhanced Marketplace Tab */}
-                {activeTab === 'marketplace' && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-6"
-                  >
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-2xl font-bold text-gray-900">Community Marketplace</h4>
-                      <div className="flex items-center space-x-3">
-                        <div className="bg-mint-100 text-mint-600 px-3 py-1 rounded-full text-sm font-medium">
-                          🛒 {cartItems.length} in cart
                         </div>
-                        <button className="bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
-                          + Create Order
-                        </button>
+
+                        <div className="bg-white rounded-lg p-3 border border-green-200 shadow-sm">
+                          <div className="flex items-start space-x-2">
+                            <div className="w-6 h-6 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <Leaf className="w-3 h-3 text-green-600" />
+                            </div>
+                            <div className="flex-1">
+                              <div className="text-xs font-medium text-gray-900 mb-1">Environmental Impact</div>
+                              <p className="text-xs text-gray-600 mb-1">Prevented 23kg CO₂ emissions this month!</p>
+                              <div className="text-xs text-green-600 font-medium">+15% vs last month</div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                  )}
 
-                    {/* Filter Tabs */}
-                    <div className="flex space-x-2 border-b border-gray-200">
-                      {['All', 'Groceries', 'Pantry', 'Local Goods', 'Household'].map((filter) => (
-                        <button
-                          key={filter}
-                          className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-                            filter === 'All'
-                              ? 'border-mint-500 text-mint-600'
-                              : 'border-transparent text-gray-600 hover:text-gray-900'
-                          }`}
-                        >
-                          {filter}
-                        </button>
-                      ))}
-                    </div>
+                  {activeTab === 'hives' && (
+                    <div className="space-y-3">
+                      <h3 className="font-bold text-sm text-gray-900 mb-3">My Hives</h3>
 
-                    <div className="grid gap-4">
-                      {marketplaceItems.map((item) => (
-                        <motion.div
-                          key={item.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: item.id * 0.1 }}
-                          className="bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden"
-                        >
-                          <div className="p-6">
-                            <div className="flex items-start justify-between">
-                              <div className="flex space-x-4">
-                                <div className="w-20 h-20 bg-gray-100 rounded-xl flex items-center justify-center text-3xl relative">
-                                  {item.image}
-                                  {item.status === 'almost_full' && (
-                                    <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">
-                                      Almost Full!
-                                    </div>
-                                  )}
-                                  {item.aiFeatures?.trending && (
-                                    <div className="absolute -top-2 -left-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
-                                      🔥 Trending
-                                    </div>
-                                  )}
-                                  {item.aiFeatures?.aiOptimized && (
-                                    <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
-                                      🤖 AI
-                                    </div>
-                                  )}
-                                </div>
-                                <div className="flex-1">
-                                  <div className="flex items-center space-x-2 mb-2">
-                                    <h5 className="font-bold text-gray-900">{item.title}</h5>
-                                    <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs font-medium">
-                                      {item.category}
-                                    </span>
-                                  </div>
-                                  <p className="text-sm text-gray-600 mb-3">{item.description}</p>
-                                  {item.aiFeatures?.smartSuggestion && (
-                                    <div className="bg-gradient-to-r from-mint-50 to-lavender-50 border border-mint-200 rounded-lg p-2 mb-3">
-                                      <div className="flex items-center space-x-2">
-                                        <div className="w-4 h-4 bg-gradient-to-r from-mint-500 to-lavender-500 rounded-full flex items-center justify-center">
-                                          <span className="text-white text-xs">✨</span>
-                                        </div>
-                                        <span className="text-sm font-medium text-gray-700">AI Suggestion:</span>
-                                        <span className="text-sm text-gray-600">{item.aiFeatures.smartSuggestion}</span>
-                                      </div>
-                                    </div>
-                                  )}
-                                  <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
-                                    <span className="flex items-center">
-                                      {item.organizerAvatar} {item.organizer}
-                                    </span>
-                                    <span className="flex items-center">
-                                      <MapPin className="w-4 h-4 mr-1" />
-                                      {item.location}
-                                    </span>
-                                    <span className="flex items-center">
-                                      <Clock className="w-4 h-4 mr-1" />
-                                      {item.timeLeft}
-                                    </span>
-                                  </div>
-                                  <div className="flex items-center space-x-3 flex-wrap">
-                                    <span className="text-2xl font-bold text-green-600">${item.price}</span>
-                                    <span className="text-gray-400 line-through">${item.originalPrice}</span>
-                                    <span className="bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs font-medium">
-                                      {item.savings}% off
-                                    </span>
-                                    {item.aiFeatures?.priceOptimal && (
-                                      <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
-                                        💡 Best Price
-                                      </span>
-                                    )}
-                                    {item.aiFeatures?.boostRecommended && (
-                                      <span className="bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full text-xs font-medium">
-                                        🚀 Boost for $0.99
-                                      </span>
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-                              <button
-                                onClick={() => addToCart(item)}
-                                className="bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
-                              >
-                                <ShoppingBag className="w-4 h-4" />
-                                <span>Join Order</span>
-                              </button>
+                      {hiveData.slice(0, 4).map((hive) => (
+                        <div key={hive.id} className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="flex items-center space-x-2">
+                              <span className="text-sm font-medium text-gray-900">{hive.name}</span>
+                              {hive.pinned && <div className="w-1 h-1 bg-yellow-400 rounded-full"></div>}
+                            </div>
+                            <div className="flex items-center space-x-1">
+                              <span className="text-xs text-gray-500">{hive.members}</span>
+                              <Users className="w-3 h-3 text-gray-400" />
                             </div>
                           </div>
 
-                          <div className="bg-gray-50 px-6 py-4 border-t border-gray-100">
-                            <div className="flex items-center justify-between text-sm mb-2">
-                              <span className="text-gray-600">
-                                {item.participants}/{item.needed} participants needed
-                              </span>
-                              <span className="font-medium text-gray-900">
-                                {Math.round((item.participants/item.needed)*100)}% complete
-                              </span>
-                            </div>
-                            <div className="w-full bg-gray-200 rounded-full h-3">
-                              <div
-                                className="bg-gradient-to-r from-mint-500 to-lavender-500 h-3 rounded-full transition-all duration-500 relative overflow-hidden"
-                                style={{ width: `${(item.participants/item.needed)*100}%` }}
-                              >
-                                <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
-                              </div>
-                            </div>
-                            <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
-                              <span>{item.needed - item.participants} spots left</span>
-                              <span>Closes in {item.timeLeft}</span>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Comprehensive Sharing Hub Tab */}
-                {activeTab === 'sharing' && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-6"
-                  >
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-2xl font-bold text-gray-900">Share Hub</h4>
-                      <button className="bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
-                        + List Item
-                      </button>
-                    </div>
-
-                    {/* Category Filter */}
-                    <div className="flex space-x-2 border-b border-gray-200">
-                      {['All', 'Tools', 'Kitchen', 'Garden', 'Electronics'].map((category) => (
-                        <button
-                          key={category}
-                          className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-                            category === 'All'
-                              ? 'border-mint-500 text-mint-600'
-                              : 'border-transparent text-gray-600 hover:text-gray-900'
-                          }`}
-                        >
-                          {category}
-                        </button>
-                      ))}
-                    </div>
-
-                    <div className="grid gap-4">
-                      {sharingItems.map((item) => (
-                        <motion.div
-                          key={item.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: item.id * 0.1 }}
-                          className={`bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 p-6 ${
-                            !item.available ? 'opacity-75' : ''
-                          }`}
-                        >
-                          <div className="flex items-start justify-between">
-                            <div className="flex items-start space-x-4">
-                              <div className="w-20 h-20 bg-gray-100 rounded-xl flex items-center justify-center text-3xl relative">
-                                {item.image}
-                                {!item.available && (
-                                  <div className="absolute inset-0 bg-gray-500/50 rounded-xl flex items-center justify-center">
-                                    <span className="text-white text-xs font-bold">RENTED</span>
-                                  </div>
-                                )}
-                              </div>
-                              <div className="flex-1">
-                                <div className="flex items-center space-x-2 mb-2">
-                                  <h5 className="font-bold text-gray-900">{item.title}</h5>
-                                  <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs font-medium">
-                                    {item.category}
-                                  </span>
-                                </div>
-                                <div className="flex items-center space-x-3 text-sm text-gray-600 mb-3">
-                                  <span className="flex items-center">
-                                    {item.ownerAvatar} {item.owner}
-                                  </span>
-                                  <span className="flex items-center">
-                                    <MapPin className="w-4 h-4 mr-1" />
-                                    {item.distance} miles
-                                  </span>
-                                </div>
-                                <div className="flex items-center space-x-2 mb-3">
-                                  <div className="flex items-center">
-                                    {[...Array(5)].map((_, i) => (
-                                      <Star key={i} className={`w-4 h-4 ${i < Math.floor(item.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />
-                                    ))}
-                                    <span className="text-sm text-gray-600 ml-1">{item.rating} ({item.reviews} reviews)</span>
-                                  </div>
-                                </div>
-                                <p className="text-sm text-gray-600 mb-3">{item.description}</p>
-
-                                {/* Features */}
-                                <div className="flex flex-wrap gap-2 mb-3">
-                                  {item.features.map((feature, index) => (
-                                    <span key={index} className="bg-mint-50 text-mint-700 px-2 py-1 rounded-full text-xs font-medium">
-                                      {feature}
-                                    </span>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <div className="text-2xl font-bold text-green-600">${item.price}/day</div>
-                              <div className="text-sm text-gray-600 mb-3">{item.nextAvailable}</div>
-                              <button
-                                disabled={!item.available}
-                                className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 ${
-                                  item.available
-                                    ? 'bg-gradient-to-r from-mint-500 to-lavender-500 text-white hover:shadow-lg'
-                                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                }`}
-                              >
-                                {item.available ? 'Borrow' : 'Unavailable'}
-                              </button>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Comprehensive Events Tab */}
-                {activeTab === 'events' && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-6"
-                  >
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-2xl font-bold text-gray-900">Community Events</h4>
-                      <button className="bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
-                        + Create Event
-                      </button>
-                    </div>
-
-                    {/* Event Categories */}
-                    <div className="flex space-x-2 border-b border-gray-200">
-                      {['All', 'Social', 'Educational', 'Community Service', 'Planning'].map((category) => (
-                        <button
-                          key={category}
-                          className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-                            category === 'All'
-                              ? 'border-mint-500 text-mint-600'
-                              : 'border-transparent text-gray-600 hover:text-gray-900'
-                          }`}
-                        >
-                          {category}
-                        </button>
-                      ))}
-                    </div>
-
-                    <div className="grid gap-4">
-                      {upcomingEvents.map((event) => (
-                        <motion.div
-                          key={event.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: event.id * 0.1 }}
-                          className="bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden"
-                        >
-                          <div className="p-6">
-                            <div className="flex items-start justify-between">
-                              <div className="flex space-x-4">
-                                <div className="w-20 h-20 bg-gray-100 rounded-xl flex items-center justify-center text-3xl">
-                                  {event.image}
-                                </div>
-                                <div className="flex-1">
-                                  <div className="flex items-center space-x-2 mb-2">
-                                    <h5 className="font-bold text-gray-900">{event.title}</h5>
-                                    <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs font-medium">
-                                      {event.category}
-                                    </span>
-                                  </div>
-                                  <p className="text-sm text-gray-600 mb-3">{event.description}</p>
-                                  <div className="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
-                                    <span className="flex items-center">
-                                      <Calendar className="w-4 h-4 mr-1" />
-                                      {event.date}
-                                    </span>
-                                    <span className="flex items-center">
-                                      <Clock className="w-4 h-4 mr-1" />
-                                      {event.time}
-                                    </span>
-                                    <span className="flex items-center">
-                                      <MapPin className="w-4 h-4 mr-1" />
-                                      {event.location}
-                                    </span>
-                                    <span className="flex items-center">
-                                      💰 {event.cost}
-                                    </span>
-                                  </div>
-                                  <div className="flex items-center space-x-2 text-sm text-gray-600 mb-3">
-                                    <span>{event.organizerAvatar} Organized by {event.organizer}</span>
-                                  </div>
-                                  <div className="bg-gray-50 rounded-lg p-3">
-                                    <div className="text-sm font-medium text-gray-700 mb-1">What to bring:</div>
-                                    <div className="text-sm text-gray-600">{event.whatToBring}</div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="text-right">
-                                <div className="text-sm text-gray-600 mb-2">
-                                  {event.attendees}/{event.maxAttendees} attending
-                                </div>
-                                <button
-                                  className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 mb-2 ${
-                                    event.rsvpStatus === 'going'
-                                      ? 'bg-green-100 text-green-600 border border-green-200'
-                                      : event.rsvpStatus === 'interested'
-                                      ? 'bg-yellow-100 text-yellow-600 border border-yellow-200'
-                                      : 'bg-gradient-to-r from-mint-500 to-lavender-500 text-white hover:shadow-lg'
-                                  }`}
-                                >
-                                  {event.rsvpStatus === 'going' ? '✓ Going' : event.rsvpStatus === 'interested' ? '★ Interested' : 'RSVP'}
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="bg-gray-50 px-6 py-3 border-t border-gray-100">
-                            <div className="w-full bg-gray-200 rounded-full h-2">
-                              <div
-                                className="bg-gradient-to-r from-mint-500 to-lavender-500 h-2 rounded-full"
-                                style={{ width: `${(event.attendees/event.maxAttendees)*100}%` }}
-                              ></div>
-                            </div>
-                            <div className="flex justify-between text-xs text-gray-500 mt-1">
-                              <span>{event.maxAttendees - event.attendees} spots left</span>
-                              <span>{Math.round((event.attendees/event.maxAttendees)*100)}% full</span>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Comprehensive Delivery Network Tab */}
-                {activeTab === 'delivery' && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-6"
-                  >
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-2xl font-bold text-gray-900">Delivery Network</h4>
-                      <button className="bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
-                        + Request Delivery
-                      </button>
-                    </div>
-
-                    {/* Delivery Stats */}
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 border border-green-200">
-                        <div className="text-2xl font-black text-green-600">$47</div>
-                        <div className="text-sm text-green-700 font-medium">Earned This Month</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border border-blue-200">
-                        <div className="text-2xl font-black text-blue-600">23</div>
-                        <div className="text-sm text-blue-700 font-medium">Deliveries Made</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 border border-purple-200">
-                        <div className="text-2xl font-black text-purple-600">4.9★</div>
-                        <div className="text-sm text-purple-700 font-medium">Delivery Rating</div>
-                      </div>
-                    </div>
-
-                    {/* Filter Tabs */}
-                    <div className="flex space-x-2 border-b border-gray-200">
-                      {['Available', 'My Requests', 'In Progress', 'Completed'].map((filter) => (
-                        <button
-                          key={filter}
-                          className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-                            filter === 'Available'
-                              ? 'border-mint-500 text-mint-600'
-                              : 'border-transparent text-gray-600 hover:text-gray-900'
-                          }`}
-                        >
-                          {filter}
-                        </button>
-                      ))}
-                    </div>
-
-                    <div className="grid gap-4">
-                      {deliveryRequests.map((request) => (
-                        <motion.div
-                          key={request.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: request.id * 0.1 }}
-                          className={`bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 p-6 ${
-                            request.status === 'claimed' ? 'opacity-75' : ''
-                          }`}
-                        >
-                          <div className="flex items-start justify-between">
-                            <div className="flex items-start space-x-4">
-                              <div className={`w-16 h-16 rounded-full flex items-center justify-center ${
-                                request.urgency === 'high' ? 'bg-red-100' :
-                                request.urgency === 'normal' ? 'bg-blue-100' : 'bg-gray-100'
-                              }`}>
-                                <Truck className={`w-8 h-8 ${
-                                  request.urgency === 'high' ? 'text-red-600' :
-                                  request.urgency === 'normal' ? 'text-blue-600' : 'text-gray-600'
-                                }`} />
-                              </div>
-                              <div className="flex-1">
-                                <div className="flex items-center space-x-2 mb-2">
-                                  <h5 className="font-bold text-gray-900">{request.type}</h5>
-                                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                                    request.urgency === 'high' ? 'bg-red-100 text-red-600' :
-                                    request.urgency === 'normal' ? 'bg-blue-100 text-blue-600' :
-                                    'bg-gray-100 text-gray-600'
-                                  }`}>
-                                    {request.urgency} priority
-                                  </span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
-                                  <div>
-                                    <span className="font-medium">From:</span> {request.from}
-                                  </div>
-                                  <div>
-                                    <span className="font-medium">To:</span> {request.to}
-                                  </div>
-                                  <div>
-                                    <span className="font-medium">Distance:</span> {request.distance} miles
-                                  </div>
-                                  <div>
-                                    <span className="font-medium">Weight:</span> {request.weight}
-                                  </div>
-                                </div>
-                                <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
-                                  <span className="flex items-center">
-                                    {request.requesterAvatar} {request.requester}
-                                  </span>
-                                  <span className="flex items-center">
-                                    <Clock className="w-4 h-4 mr-1" />
-                                    {request.timeWindow}
-                                  </span>
-                                </div>
-                                <div className="text-sm text-gray-600 mb-3">
-                                  <span className="font-medium">Items:</span> {request.items}
-                                </div>
-                                {request.notes && (
-                                  <div className="bg-gray-50 rounded-lg p-3">
-                                    <div className="text-sm font-medium text-gray-700 mb-1">Special Notes:</div>
-                                    <div className="text-sm text-gray-600">{request.notes}</div>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <div className="text-3xl font-bold text-green-600 mb-2">${request.reward}</div>
-                              <div className="text-sm text-gray-600 mb-4">Delivery reward</div>
-                              <button
-                                disabled={request.status === 'claimed'}
-                                className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 ${
-                                  request.status === 'available'
-                                    ? 'bg-gradient-to-r from-mint-500 to-lavender-500 text-white hover:shadow-lg'
-                                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                }`}
-                              >
-                                {request.status === 'available' ? 'Accept Delivery' : 'Claimed'}
-                              </button>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Comprehensive Community Chat Tab */}
-                {activeTab === 'chat' && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-6"
-                  >
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-2xl font-bold text-gray-900">Community Chat</h4>
-                      <button className="bg-gradient-to-r from-mint-500 to-lavender-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
-                        + New Channel
-                      </button>
-                    </div>
-
-                    {/* Chat Stats */}
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="bg-gradient-to-br from-mint-50 to-mint-100 rounded-xl p-4 border border-mint-200">
-                        <div className="text-2xl font-black text-mint-600">5</div>
-                        <div className="text-sm text-mint-700 font-medium">Active Channels</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-lavender-50 to-lavender-100 rounded-xl p-4 border border-lavender-200">
-                        <div className="text-2xl font-black text-lavender-600">127</div>
-                        <div className="text-sm text-lavender-700 font-medium">Community Members</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-4 border border-yellow-200">
-                        <div className="text-2xl font-black text-yellow-600">6</div>
-                        <div className="text-sm text-yellow-700 font-medium">Unread Messages</div>
-                      </div>
-                    </div>
-
-                    {/* Channel Categories */}
-                    <div className="flex space-x-2 border-b border-gray-200">
-                      {['All Channels', 'Community', 'Marketplace', 'Sharing', 'Events'].map((category) => (
-                        <button
-                          key={category}
-                          className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-                            category === 'All Channels'
-                              ? 'border-mint-500 text-mint-600'
-                              : 'border-transparent text-gray-600 hover:text-gray-900'
-                          }`}
-                        >
-                          {category}
-                        </button>
-                      ))}
-                    </div>
-
-                    <div className="grid gap-3">
-                      {chatChannels.map((channel) => (
-                        <motion.div
-                          key={channel.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: channel.id * 0.1 }}
-                          className={`bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 p-4 cursor-pointer ${
-                            channel.pinned ? 'ring-2 ring-mint-200' : ''
-                          }`}
-                        >
+                          <p className="text-xs text-gray-600 mb-1">{hive.lastMessage}</p>
                           <div className="flex items-center justify-between">
-                            <div className="flex items-center space-x-3">
-                              <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                                channel.type === 'community' ? 'bg-gradient-to-br from-mint-400 to-mint-500' :
-                                channel.type === 'marketplace' ? 'bg-gradient-to-br from-green-400 to-green-500' :
-                                channel.type === 'sharing' ? 'bg-gradient-to-br from-blue-400 to-blue-500' :
-                                channel.type === 'delivery' ? 'bg-gradient-to-br from-purple-400 to-purple-500' :
-                                'bg-gradient-to-br from-gray-400 to-gray-500'
-                              }`}>
-                                <MessageCircle className="w-6 h-6 text-white" />
-                              </div>
-                              <div className="flex-1">
-                                <div className="flex items-center space-x-2 flex-wrap">
-                                  <h5 className="font-bold text-gray-900">{channel.name}</h5>
-                                  {channel.pinned && (
-                                    <span className="bg-mint-100 text-mint-600 px-2 py-1 rounded-full text-xs font-medium">
-                                      📌 Pinned
-                                    </span>
-                                  )}
-                                  {channel.aiFeatures?.beeGuardianActive && (
-                                    <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
-                                      🤖 BeeGuardian
-                                    </span>
-                                  )}
-                                  {channel.aiFeatures?.safetyScore >= 95 && (
-                                    <span className="bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs font-medium">
-                                      🛡️ Safe
-                                    </span>
-                                  )}
-                                  <span className="text-xs text-gray-500">{channel.members} members</span>
-                                </div>
-                                <div className="text-sm text-gray-600 mt-1">
-                                  <span className="font-medium">{channel.lastSender}:</span> {channel.lastMessage}
-                                </div>
-                                {channel.aiFeatures?.aiSuggestion && (
-                                  <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-lg p-2 mt-2">
-                                    <div className="flex items-center space-x-2">
-                                      <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
-                                        <span className="text-white text-xs">🤖</span>
-                                      </div>
-                                      <span className="text-xs font-medium text-blue-700">BeeGuardian:</span>
-                                      <span className="text-xs text-blue-600">{channel.aiFeatures.aiSuggestion}</span>
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <div className="text-xs text-gray-500 mb-1">{channel.timestamp}</div>
-                              {channel.unread > 0 && (
-                                <div className="bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center ml-auto">
-                                  {channel.unread}
+                            <span className="text-xs text-gray-500">{hive.lastSender}</span>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-xs text-gray-400">{hive.timestamp}</span>
+                              {hive.unread > 0 && (
+                                <div className="w-4 h-4 bg-mint-500 rounded-full flex items-center justify-center">
+                                  <span className="text-xs text-white font-bold">{hive.unread}</span>
                                 </div>
                               )}
                             </div>
                           </div>
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
-                  </motion.div>
-                )}
+                  )}
+
+                  {activeTab === 'marketplace' && (
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-bold text-lg text-gray-900">Marketplace</h3>
+                        <div className="flex items-center space-x-2">
+                          <div className="w-6 h-6 bg-gray-200 rounded-lg flex items-center justify-center">
+                            <Search className="w-3 h-3 text-gray-600" />
+                          </div>
+                          <div className="w-6 h-6 bg-gray-200 rounded-lg flex items-center justify-center">
+                            <Filter className="w-3 h-3 text-gray-600" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Featured Deal Banner */}
+                      <div className="bg-gradient-to-r from-mint-500 to-emerald-500 rounded-xl p-4 text-white mb-4">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <div className="text-sm font-bold">🔥 Hot Deal</div>
+                            <div className="text-xs opacity-90">Bulk organic rice - 40% off</div>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-xs opacity-90">Ends in</div>
+                            <div className="text-sm font-bold">2h 15m</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {marketplaceItems.map((item) => (
+                        <div key={item.id} className="bg-white rounded-xl p-4 border border-gray-200 shadow-sm">
+                          <div className="flex items-start space-x-3">
+                            <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-start justify-between mb-2">
+                                <h4 className="text-sm font-semibold text-gray-900 leading-tight">{item.name}</h4>
+                                {item.verified && (
+                                  <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 ml-2">
+                                    <Check className="w-2 h-2 text-white" />
+                                  </div>
+                                )}
+                              </div>
+
+                              <div className="flex items-center space-x-2 mb-2">
+                                <span className="text-lg font-bold text-green-600">{item.price}</span>
+                                <span className="text-sm text-gray-500 line-through">{item.originalPrice}</span>
+                                <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">{item.savings}</span>
+                              </div>
+
+                              <div className="flex items-center space-x-3 mb-2">
+                                <div className="flex items-center space-x-1">
+                                  <Star className="w-3 h-3 text-yellow-400 fill-current" />
+                                  <span className="text-xs text-gray-600 font-medium">{item.rating}</span>
+                                  <span className="text-xs text-gray-500">({item.reviews})</span>
+                                </div>
+                                <div className="flex items-center space-x-1">
+                                  <MapPin className="w-3 h-3 text-gray-400" />
+                                  <span className="text-xs text-gray-500">{item.location}</span>
+                                </div>
+                              </div>
+
+                              <div className="flex items-center space-x-2 mb-3">
+                                {item.groupBuy && (
+                                  <span className="text-xs bg-mint-100 text-mint-700 px-2 py-1 rounded-lg font-medium">
+                                    Group Buy: {item.currentOrders}/{item.minOrder}
+                                  </span>
+                                )}
+                                {item.organic && (
+                                  <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-lg font-medium">Organic</span>
+                                )}
+                                {item.condition && (
+                                  <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-lg font-medium">{item.condition}</span>
+                                )}
+                              </div>
+
+                              <div className="flex items-center space-x-2">
+                                <button
+                                  onClick={() => addToCart(item)}
+                                  className="flex-1 bg-mint-500 text-white text-sm py-2 px-3 rounded-lg hover:bg-mint-600 transition-colors font-medium"
+                                >
+                                  Add to Cart
+                                </button>
+                                <button className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                  <Heart className="w-4 h-4 text-gray-600" />
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {activeTab === 'sharing' && (
+                    <div className="space-y-3">
+                      <h3 className="font-bold text-sm text-gray-900 mb-3">Resource Sharing</h3>
+
+                      <div className="bg-mint-50 rounded-lg p-3 border border-mint-200">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-semibold text-mint-700">AVAILABLE NOW</span>
+                          <span className="text-xs text-gray-500">0.8 miles</span>
+                        </div>
+                        <h4 className="font-bold text-sm text-gray-900 mb-1">🔧 Power Drill Set</h4>
+                        <p className="text-xs text-gray-600 mb-2">Professional grade, perfect for home projects</p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-gray-600">Available until Sunday</span>
+                          <button className="text-xs bg-mint-500 text-white px-3 py-1 rounded-lg">Borrow</button>
+                        </div>
+                      </div>
+
+                      <div className="bg-lavender-50 rounded-lg p-3 border border-lavender-200">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-semibold text-lavender-700">REQUESTED</span>
+                          <span className="text-xs text-gray-500">Community</span>
+                        </div>
+                        <h4 className="font-bold text-sm text-gray-900 mb-1">🚗 Car Seat (Toddler)</h4>
+                        <p className="text-xs text-gray-600 mb-2">Needed for weekend trip, 2-3 days</p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-gray-600">3 people can help</span>
+                          <button className="text-xs bg-lavender-500 text-white px-3 py-1 rounded-lg">Offer</button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === 'events' && (
+                    <div className="space-y-3">
+                      <h3 className="font-bold text-sm text-gray-900 mb-3">Community Events</h3>
+
+                      <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-semibold text-blue-700">THIS WEEKEND</span>
+                          <span className="text-xs text-gray-500">Sat 2 PM</span>
+                        </div>
+                        <h4 className="font-bold text-sm text-gray-900 mb-1">🌱 Community Garden Workshop</h4>
+                        <p className="text-xs text-gray-600 mb-2">Learn composting and sustainable gardening</p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-gray-600">12 attending</span>
+                          <button className="text-xs bg-blue-500 text-white px-3 py-1 rounded-lg">Join</button>
+                        </div>
+                      </div>
+
+                      <div className="bg-green-50 rounded-lg p-3 border border-green-200">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-semibold text-green-700">NEXT WEEK</span>
+                          <span className="text-xs text-gray-500">Wed 7 PM</span>
+                        </div>
+                        <h4 className="font-bold text-sm text-gray-900 mb-1">🍕 Neighborhood Potluck</h4>
+                        <p className="text-xs text-gray-600 mb-2">Bring a dish, meet your neighbors!</p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-gray-600">8 attending</span>
+                          <button className="text-xs bg-green-500 text-white px-3 py-1 rounded-lg">RSVP</button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === 'delivery' && (
+                    <div className="space-y-3">
+                      <h3 className="font-bold text-sm text-gray-900 mb-3">Delivery Network</h3>
+
+                      <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-semibold text-orange-700">ACTIVE DELIVERY</span>
+                          <span className="text-xs text-gray-500">ETA 15 min</span>
+                        </div>
+                        <h4 className="font-bold text-sm text-gray-900 mb-1">📦 Grocery Order #1247</h4>
+                        <p className="text-xs text-gray-600 mb-2">Driver: Mike Chen • Honda Civic</p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-gray-600">3 stops remaining</span>
+                          <button className="text-xs bg-orange-500 text-white px-3 py-1 rounded-lg">Track</button>
+                        </div>
+                      </div>
+
+                      <div className="bg-purple-50 rounded-lg p-3 border border-purple-200">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-semibold text-purple-700">EARN OPPORTUNITY</span>
+                          <span className="text-xs text-gray-500">$12-18</span>
+                        </div>
+                        <h4 className="font-bold text-sm text-gray-900 mb-1">🚗 Weekend Delivery Route</h4>
+                        <p className="text-xs text-gray-600 mb-2">5 deliveries, 8 miles total, 2 hours</p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-gray-600">Perfect for your area</span>
+                          <button className="text-xs bg-purple-500 text-white px-3 py-1 rounded-lg">Accept</button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === 'chat' && (
+                    <div className="space-y-3">
+                      <h3 className="font-bold text-sm text-gray-900 mb-3">Community Chat</h3>
+
+                      <div className="space-y-2">
+                        <div className="flex items-start space-x-2">
+                          <div className="w-6 h-6 bg-mint-400 rounded-full flex items-center justify-center">
+                            <span className="text-xs text-white font-bold">S</span>
+                          </div>
+                          <div className="flex-1">
+                            <div className="bg-gray-100 rounded-lg p-2">
+                              <p className="text-xs text-gray-900">Hey everyone! The bulk rice order is almost ready. We need 3 more people to get the best price 🌾</p>
+                            </div>
+                            <span className="text-xs text-gray-500">Sarah • 2 min ago</span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start space-x-2">
+                          <div className="w-6 h-6 bg-lavender-400 rounded-full flex items-center justify-center">
+                            <span className="text-xs text-white font-bold">M</span>
+                          </div>
+                          <div className="flex-1">
+                            <div className="bg-gray-100 rounded-lg p-2">
+                              <p className="text-xs text-gray-900">Count me in! How much per bag?</p>
+                            </div>
+                            <span className="text-xs text-gray-500">Mike • 1 min ago</span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start space-x-2 justify-end">
+                          <div className="flex-1 text-right">
+                            <div className="bg-mint-500 text-white rounded-lg p-2 inline-block">
+                              <p className="text-xs">$8 per 5kg bag, down from $12! 🎉</p>
+                            </div>
+                            <span className="text-xs text-gray-500 block">You • now</span>
+                          </div>
+                          <div className="w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center">
+                            <span className="text-xs text-white font-bold">Y</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center space-x-2 mt-3 pt-3 border-t border-gray-200">
+                        <input
+                          type="text"
+                          placeholder="Type a message..."
+                          className="flex-1 text-xs bg-gray-100 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-mint-300"
+                        />
+                        <button className="w-8 h-8 bg-mint-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white text-xs">→</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
             </motion.div>
+
+            {/* Feature Description Panel */}
+            {showFeaturePanel && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, x: panelPosition.side === 'right' ? 50 : -50 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                className={`absolute top-16 z-30 w-80 ${
+                  panelPosition.side === 'right' ? 'left-[500px]' : 'right-[500px]'
+                }`}
+                style={{
+                  transform: `translate(${panelPosition.x}px, ${panelPosition.y}px)`
+                }}
+              >
+                <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 backdrop-blur-sm">
+                  {(() => {
+                    const feature = features.find(f => f.id === activeTab);
+                    return (
+                      <div>
+                        <div className="flex items-center space-x-3 mb-4">
+                          <div className="w-10 h-10 bg-gradient-to-r from-mint-500 to-lavender-500 rounded-xl flex items-center justify-center">
+                            {feature?.icon}
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-gray-900">{feature?.title}</h3>
+                            <p className="text-sm text-gray-600">{feature?.description}</p>
+                          </div>
+                        </div>
+
+                        <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                          {feature?.fullDescription}
+                        </p>
+
+                        <div className="space-y-2">
+                          <h4 className="text-xs font-semibold text-gray-700 uppercase tracking-wide">Key Benefits</h4>
+                          {feature?.benefits.map((benefit, index) => (
+                            <div key={index} className="flex items-start space-x-2">
+                              <div className="w-1.5 h-1.5 bg-gradient-to-r from-mint-500 to-lavender-500 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-sm text-gray-600">{benefit}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <Link href="/waitlist">
+                          <button
+                            onClick={() => setShowFeaturePanel(false)}
+                            className="mt-4 w-full bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200"
+                          >
+                            Join the Waitlist
+                          </button>
+                        </Link>
+                      </div>
+                    );
+                  })()}
+                </div>
+              </motion.div>
+            )}
           </div>
         </div>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-center mt-16"
+        >
+          <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Ready to Experience the Future of Community Commerce?
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Join thousands of communities already saving money, reducing waste, and building stronger connections through AI-powered collaboration.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/waitlist">
+                <button className="bg-white text-gray-900 font-semibold py-3 px-8 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  Join the Waitlist
+                </button>
+              </Link>
+              <button className="bg-white/10 backdrop-blur-sm text-gray-900 font-semibold py-3 px-8 rounded-xl border-2 border-white/20 hover:bg-white/20 transition-all duration-300">
+                Explore More Features
+              </button>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

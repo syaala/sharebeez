@@ -4,7 +4,6 @@ import CommunitySuccessSection from '@/components/sections/CommunitySuccessSecti
 import WhyChooseSection from '@/components/sections/WhyChooseSection';
 import WhoItsForSection from '@/components/sections/WhoItsForSection';
 import KeyFeaturesSection from '@/components/sections/KeyFeaturesSection';
-import AIFeaturesSection from '@/components/sections/AIFeaturesSection';
 import HowItWorksSection from '@/components/sections/HowItWorksSection';
 import PartnershipSection from '@/components/sections/PartnershipSection';
 import FAQSection from '@/components/sections/FAQSection';
@@ -15,7 +14,6 @@ export default function Home() {
     <main className="min-h-screen">
       <HeroSection />
       <KeyFeaturesSection />
-      <AIFeaturesSection />
       <CommunitySuccessSection />
       <WhyChooseSection />
       <WhoItsForSection />

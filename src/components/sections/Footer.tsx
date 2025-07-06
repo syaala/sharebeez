@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Mail, Facebook, Twitter, Instagram, Linkedin, Send } from 'lucide-react';
+import Link from 'next/link';
 import SharebeezLogo from '../ui/SharebeezLogo';
 
 const Footer: React.FC = () => {
@@ -36,7 +37,7 @@ const Footer: React.FC = () => {
         { label: "Features", href: "#features" },
         { label: "How It Works", href: "#how-it-works" },
         { label: "Pricing", href: "#" },
-        { label: "Download App", href: "#" }
+        { label: "Join Waitlist", href: "/waitlist" }
       ]
     },
     {
@@ -133,9 +134,11 @@ const Footer: React.FC = () => {
 
             {/* Main CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-gray-900 font-semibold py-4 px-8 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                Download the App
-              </button>
+              <Link href="/waitlist">
+                <button className="bg-white text-gray-900 font-semibold py-4 px-8 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                  Join the Waitlist
+                </button>
+              </Link>
               <button className="bg-white/10 backdrop-blur-sm text-white font-semibold py-4 px-8 rounded-xl border-2 border-white/20 hover:bg-white/20 transition-all duration-300">
                 Explore Communities
               </button>

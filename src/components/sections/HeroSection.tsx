@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import Link from 'next/link';
 import SharebeezLogo from '../ui/SharebeezLogo';
 
 const HeroSection: React.FC = () => {
@@ -351,12 +352,14 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <button
-              className="bg-white text-gray-900 font-semibold py-4 px-8 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg focus:outline-none focus:ring-4 focus:ring-white/50"
-              aria-label="Join a community group to start saving money"
-            >
-              Join a Hive
-            </button>
+            <Link href="/waitlist">
+              <button
+                className="bg-white text-gray-900 font-semibold py-4 px-8 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg focus:outline-none focus:ring-4 focus:ring-white/50"
+                aria-label="Join the waitlist to be notified when we launch"
+              >
+                Join the Waitlist
+              </button>
+            </Link>
             <button
               className="bg-white/10 backdrop-blur-sm text-white font-semibold py-4 px-8 rounded-xl border-2 border-white/20 hover:bg-white/20 hover:shadow-xl transition-all duration-300 text-lg focus:outline-none focus:ring-4 focus:ring-white/50"
               onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
